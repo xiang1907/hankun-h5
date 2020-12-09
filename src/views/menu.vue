@@ -28,7 +28,7 @@
 		width: 750/@rem;
 		height: 1300/@rem;
 		background-size: cover;
-		background-position-x: -160/@rem;
+		// background-position-x: -160/@rem;
 	}
 	.menu{
 		width: 412/@rem;
@@ -41,6 +41,8 @@
 	}
 	.content{
 		position: absolute;
+		width: 100%;
+		height: 100%;
 		top: 0;
 		left: 0;
 		font-size: 24/@rem;
@@ -57,20 +59,20 @@
 				padding-top: 4/@rem;
 			}
 			&.content-item1{
-				top: 434/@rem;
-				left: 313/@rem;
+				top: 260/@rem;
+				left: 434/@rem;
 			}
 			&.content-item2{
-				top: 459/@rem;
-				left: 510/@rem;
+				top: 454/@rem;
+				left: 626/@rem;
 			}
 			&.content-item3{
-				top: 650/@rem;
-				left: 1014/@rem;
+				top: 644/@rem;
+				left: 1004/@rem;
 			}
 			&.content-item4{
-				top: 844/@rem;
-				left: 315/@rem;
+				top: 836/@rem;
+				left: 428/@rem;
 			}
 		}
 	}
