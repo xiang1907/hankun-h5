@@ -24,6 +24,10 @@ export default new Router({
       path: '/menu',
       name: '/menu',
       component: resolve => { require(['@/views/menu'], resolve) },
+    },{
+      path: '/hkly',
+      name: '汉坤领域',
+      component: resolve => { require(['@/views/hkly'], resolve) },
     },
   ]
 })
