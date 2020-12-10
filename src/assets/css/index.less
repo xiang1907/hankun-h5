@@ -1,0 +1,30 @@
+@charset "utf-8";
+@r: 50rem;
+.animation(@n, @t: 0s, @fn: ease-in-out, @delay: 0s, @i: infinite, @dur: alternate) {
+    animation: @n @t @fn @delay @i @dur;
+    -webkit-animation: @n @t @fn @delay @i @dur;
+    -o-animation: @n @t @fn @delay @i @dur;
+    -moz-animation: @n @t @fn @delay @i @dur;
+}
+.bgimgFull(@url,@sizeX:100%,@sizeY:auto) {
+    background-image:url(@url);
+    background-size:@sizeX @sizeY;
+    background-repeat:no-repeat;
+}
+
+.pos-a(@top:0,@left:0,@z:auto) {
+    position:absolute;top:@top/@r;left:@left/@r;z-index:@z;
+}
+.pos-r(@top:0,@left:0,@z:0) {
+    position:relative;top:@top/@r;left:@left/@r;z-index:@z;
+}
+.scale(@w,@h:auto) {
+    width:@w/@r;height:@h/@r;
+}
+.scalePer(@w,@h:auto) {
+    width:@w;height:@h;
+}
+.pos-center {
+    position: absolute;left:50%;top:50%;transform: translate(-50%,-50%);
+}
+

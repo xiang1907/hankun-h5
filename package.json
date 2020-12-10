@@ -1,5 +1,5 @@
 {
-  "name": "汉坤2020时光之旅",
+  "name": "hankun-2020-h5",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,7 +10,9 @@
     "core-js": "^2.6.5",
     "less": "^3.12.2",
     "less-loader": "^7.1.0",
+    "swiper": "^5.4.5",
     "vue": "^2.6.10",
+    "vue-awesome-swiper": "^4.1.1",
     "vue-router": "^3.4.9"
   },
   "devDependencies": {
