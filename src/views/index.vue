@@ -3,9 +3,9 @@
 	  <div class="title"><img src="../../static/img/p0-img1.png"/></div>
       <div class="loading-panel">
 		  <div class="loading-progress">
-			  <span class="loading-dis"></span>
+			  <span class="loading-dis" :style="{'width':precent}" ></span>
 		  </div>
-		  <span class="loading-precent">42%{{precent}}</span>
+		  <span class="loading-precent">{{precent}}</span>
 		  <span>寻找并点亮图标，开启神秘贺卡</span>
       </div>
 	  <div class="footer"><img src="../../static/img/p0-img2.png"/></div>
@@ -19,17 +19,26 @@
 		count: 0,
 		precent: '',
 		imgs:[{
-				url:'../../static/img/p0-img1.png'
+				url:require('../../static/img/p0-img1.png')
 			},{
-				url:"../../static/img/p0-img2.png",
+				url:require("../../static/img/p0-img2.png"),
 			},{
-				url:"../../static/img/p1-img1.png",
+				url:require("../../static/img/p1-img1.png"),
 			},{
-				url:"../../static/img/p1-img2.png",
+				url:require("../../static/img/p1-img2.png"),
 			},{
-				url:"../../static/img/bg.png"
+				url:require("../../static/img/bg.png")
+			},{
+				url:require("../../static/img/p2-img8.png"),
+			},{
+				url:require("../../static/img/p2-img2.png"),
+			},{
+				url:require("../../static/img/p3-img1.png"),
+			},{
+				url:require("../../static/img/p3-img2.png"),
 			}
-		]
+		],
+		porgressWidth: 0
       };
     },
     mounted: function() {
@@ -38,27 +47,24 @@
     methods: {
         preload(){
 			 var _this = this;
-			  for (let i=0;i<_this.imgs.length;i++) {
-				  let image = new Image()
-				  image.src = _this.imgs[i].url;
-				  console.log(image)
-				  image.onload = ()=> {
-				  		console.log('sss')
-				  }
-				  // image.onload = () =>{ //加载完成
-				  // 	// _this.count ++ ;
-				  // 	// console.log(this.count,_this.urls.length)
-				  // 	// let percentNum = Math.floor(_this.count / _this.imgs.length * 100);
-				  // 	// _this.percent = `${percentNum}%`
-				  // }
-				 
-			  }
+			 for(let img in _this.imgs){
+			 	let image = new Image();
+			 	image.src = _this.imgs[img].url;
+			 	console.log(image);
+			 	image.onload = () =>{ //加载完成
+			 		_this.count ++ ;
+			 		console.log(_this.count,_this.imgs.length)
+			 		let percentNum = Math.floor(_this.count / _this.imgs.length * 100);
+			 		_this.precent = `${percentNum}%`
+					// _this.porgressWidth = 
+			 	}
+			 }
 		}
     },
     watch: {
         count: function(val) {
           console.log(val)
-          if (val ===  _this.imgs.length) {
+          if (val ===  this.imgs.length) {
             // 图片加载完成后跳转页面
             this.$router.push({path: 'menu'})
           }

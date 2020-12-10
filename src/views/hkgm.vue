@@ -77,7 +77,8 @@
 			width: 750/@rem;
 			height: 414/@rem;
 			background-size: cover;
-			.animation(moveScale, @t: 3s, @fn: ease-in-out, @delay: 1s, @i: 1,@dur: alternate) ;
+			transform-origin: right;
+			.animation(moveScale, @t: 3s, @fn: linear, @delay: 1s, @i: 1,@dur: alternate) ;
 			                animation-fill-mode: forwards; 
 		}
 		.content-item{
