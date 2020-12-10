@@ -6,7 +6,7 @@
 			</swiper-slide>
 			<swiper-slide>
 				<div class="bookBox">
-					<img src="../assets/hkly/book-1.png" />
+					<img src="../assets/hkly/book-1.png" @click="openBook(1)" />
 					<img src="../assets/hkly/book-2.png" />
 					<img src="../assets/hkly/book-3.png" />
 					<img src="../assets/hkly/book-4.png" />
@@ -22,6 +22,9 @@
 			</swiper-slide>
 			<div class="swiper-pagination" slot="pagination"></div>
 		</swiper>
+		<div class="footer">
+			<img src="../assets/back-btn.png" @click="goBack"></span>
+		</div>
 	</div>
 </template>
 
@@ -44,7 +47,9 @@ export default {
 	created() {
 	},
 	methods: {
-		
+		goBack(){
+			this.$router.push('/menu')
+		}
 	},
 	computed: {}
 };
@@ -88,6 +93,19 @@ img {
 	.swiperBox /deep/ .swiper-pagination-bullet-active {
 		background-color: #ffffff;
 		opacity: 1;
+	}
+	.footer{
+		position: absolute;
+		bottom: 60/@r;
+		left: 50%;
+		width:175/@r;
+		height: 35/@r;
+		transform: translateX(-50%);
+		// width: 178/@r;
+		img {
+			width:100%;
+			height:100%;
+		}
 	}
 }
 </style>
