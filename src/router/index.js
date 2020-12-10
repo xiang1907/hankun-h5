@@ -15,7 +15,7 @@ export default new Router({
     {
       path: '/',
       name: '默认',
-      redirect: '/index',
+      redirect: '/menu',
     },{
       path: '/index',
       name: '/index',
@@ -28,6 +28,14 @@ export default new Router({
       path: '/hkly',
       name: '汉坤领域',
       component: resolve => { require(['@/views/hkly'], resolve) },
+    },{
+      path: '/hkgm',
+      name: '汉坤规模',
+      component: resolve => { require(['@/views/hkgm'], resolve) },
+    },{
+      path: '/hkjy',
+      name: '2020寄语',
+      component: resolve => { require(['@/views/hkjy'], resolve) },
     },
   ]
 })
