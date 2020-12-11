@@ -19,7 +19,7 @@
 			</div>
 		</div>
 		<div class="footer">
-			<span class="btn-back" @click="goBack">返回档案室</span>
+			<span class="btn-back" @click="goBack"><img src="../../static/img/back-btn.png"/></span>
 		</div>
 	</div>
 </template>
@@ -48,7 +48,7 @@
 		-moz-animation: @n @t @fn @delay @i @dur;
 	}
 	.mainBg {
-		background-color: #806b5f;
+		background-color: #ffffff;
 		background-image: url(../../static/img/p2-img7.png);
 		background-size: cover;
 		width: 750/@rem;
@@ -118,13 +118,13 @@
 		position: absolute;
 		bottom: 60/@rem;
 		left: 292/@rem;
-		// width: 178/@rem;
+		width: 170/@rem;
 		height: 64/@rem;
-		font-size: 34/@rem;
-		letter-spacing: 2px;
-		color: #ffffff;
-		border-bottom: 2px solid #ffffff;
 		z-index: 100;
+		span,img{
+			display: block;
+			width: 100%;
+		}
 	}
 	@keyframes moveScale{
 		 0%{
@@ -132,10 +132,8 @@
 			transform: scale(1);
 		 }
 		 100%{
-			 // top: 176/@rem;
-			 // left: -54%;
-			 transform: scale(2.1);
-			 transform-origin: right;
+			transform: scale(2.1);
+			transform-origin: right;
 		 }
 	}
 	@keyframes fadeIn{

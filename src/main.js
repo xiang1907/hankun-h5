@@ -6,9 +6,13 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 // import 'swiper/swiper-bundle.css'
 import 'swiper/css/swiper.min.css'
 import Global from './components/Global'
+import axios from 'axios'
+
 Vue.use(VueAwesomeSwiper)
 Vue.prototype.Global = Global.modalState ;
+Vue.prototype.axios = axios ;
 Vue.config.productionTip = false
+
 
 router.afterEach(route => {
   // iView.LoadingBar.finish();
