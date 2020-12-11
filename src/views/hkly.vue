@@ -7,7 +7,7 @@
 				</swiper-slide>
 				<swiper-slide>
 					<div class="bookBox">
-						<img src="../assets/hkly/book-1.png" />
+						<img src="../assets/hkly/book-1.png" @click="openBook1" />
 						<img src="../assets/hkly/book-2.png" @click="openBook(0)" />
 						<img src="../assets/hkly/book-3.png" @click="openBook(1)" />
 						<img src="../assets/hkly/book-4.png" @click="openBook(2)" />
@@ -27,12 +27,19 @@
 				<img src="../assets/back-btn.png" @click="goBack"></span>
 			</div>
 		</div>
-		<div class="bookBg" v-show="showBook">
+		<!-- 书 -->
+		<div class="bookBg" v-show="showBook == 1">
 			<div class="bookTitle">
 				<img :src="bookContent[bookNumber].bookTitleImg" alt="">
 			</div>
 			<div ref="bookTextScroll" class="bookText" v-html="bookContent[bookNumber].bookText"></div>
 			
+			<div class="footer">
+				<img src="../assets/hkly/back-menu-btn.png" @click="goMenu"></span>
+			</div>
+		</div>
+		<!-- 兼收和并购 -->
+		<div class="bookContentBg" v-show="showBook == 2">
 			<div class="footer">
 				<img src="../assets/hkly/back-menu-btn.png" @click="goMenu"></span>
 			</div>
@@ -48,7 +55,7 @@ export default {
 	name: '',
 	data() {
 		return {
-			showBook: false,
+			showBook: 0,
 			bookNumber: 0,
 			bookContent: [{
 				bookTitleImg: require('../assets/hkly/book-title-2.png'),
@@ -98,16 +105,18 @@ export default {
 			this.$router.push('/menu')
 		},
 		goMenu() {
-			this.showBook = !this.showBook
+			this.showBook = 0
+		},
+		openBook1() {
+			this.showBook = 2
 		},
 		openBook(num) {
-			this.showBook = !this.showBook
+			this.showBook = 1
 			this.bookNumber = this.bookContent.length-1;
 			var that = this
 			setTimeout(function(){
 				that.bookNumber = num
 			},50)
-			
 		}
 	},
 	computed: {}
@@ -165,6 +174,27 @@ img {
 		img {
 			width:100%;
 			height:100%;
+		}
+	}
+	.bookContentBg {
+		.scale(750,1300);
+		.pos-center;
+		background-image: url('../assets/hkly/book-content-1.png');
+		background-size: 100% auto;
+		background-repeat: no-repeat;
+		background-position: center;
+		.footer{
+			position: absolute;
+			bottom: 60/@r;
+			left: 50%;
+			width:136/@r;
+			height: 51/@r;
+			transform: translateX(-50%);
+			// width: 178/@r;
+			img {
+				width:100%;
+				height:100%;
+			}
 		}
 	}
 	.bookBg {

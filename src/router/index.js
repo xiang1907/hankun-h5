@@ -36,6 +36,10 @@ export default new Router({
       path: '/hkjy',
       name: '2020寄语',
       component: resolve => { require(['@/views/hkjy'], resolve) },
+    },{
+      path: '/zbsc',
+      name: '资本市场',
+      component: resolve => { require(['@/views/zbsc'], resolve) },
     },
   ]
 })
