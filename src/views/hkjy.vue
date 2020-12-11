@@ -100,7 +100,7 @@
 
 		.contentBg {
 			position: absolute;
-			top: 5%;
+			top: 0;
 			left: 0;
 			width: 750/@rem;
 			height: 1249/@rem;
@@ -120,7 +120,7 @@
 
 	.footer-j {
 		position: absolute;
-		top: 90%;
+		top: 94%;
 		left: 50%;
 		width: 233/@rem;
 		height: 41/@rem;
