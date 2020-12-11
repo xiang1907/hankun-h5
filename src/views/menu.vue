@@ -212,7 +212,7 @@
 		top: 130/@rem;
 		width: 444/@rem;
 		height: 1106/@rem;
-		.animation(move, @t: 8s, @fn: ease-in-out, @delay: 0.5s, @i: 1, @dur: alternate);
+		.animation(move, @t: 11s, @fn: ease-in-out, @delay: 1s, @i: 1, @dur: alternate);
 		animation-fill-mode: forwards;
 		transform-origin: left;
 		z-index: 101;
