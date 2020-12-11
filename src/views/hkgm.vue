@@ -18,7 +18,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="footer">
+		<div class="footer-m">
 			<span class="btn-back" @click="goBack"><img src="../../static/img/back-btn.png"/></span>
 		</div>
 	</div>
@@ -68,10 +68,13 @@
 	}
 	.content-gm{
 		position: relative;
-		font-size: 24/@rem;
+		width: 100%;
+		height: 100%;
+		// font-size: 24/@rem;
 		.contentBg{
 			position: absolute;
-			top: 402/@rem;
+			// top: 402/@rem;
+			top: 30%;
 			right: 0;
 			background: url(../../static/img/p2-img8.png) no-repeat;
 			width: 750/@rem;
@@ -114,12 +117,15 @@
 			}
 		}
 	}
-	.footer{
+	.footer-m{
 		position: absolute;
-		bottom: 60/@rem;
-		left: 292/@rem;
+		top: 90%;
+		left: 50%;
+		// bottom: 60/@rem;
+		// left: 292/@rem;
 		width: 170/@rem;
 		height: 64/@rem;
+		transform: translateX(-50%);
 		z-index: 100;
 		span,img{
 			display: block;

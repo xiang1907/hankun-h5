@@ -8,7 +8,7 @@
 				<img src="../../static/img/p3-img3.png" />
 			</div>
 		</div>
-		<div class="footer">
+		<div class="footer-j">
 			<span class="btn-back" @click="share"><img src="../../static/img/p3-img4.png" /></span>
 		</div>
 	</div>
@@ -90,7 +90,8 @@
 
 	.content-jy {
 		position: relative;
-		font-size: 24/@rem;
+		width: 100%;
+		height: 100%;
 
 		img {
 			display: block;
@@ -99,7 +100,7 @@
 
 		.contentBg {
 			position: absolute;
-			top: 0;
+			top: 5%;
 			left: 0;
 			width: 750/@rem;
 			height: 1249/@rem;
@@ -117,9 +118,9 @@
 		}
 	}
 
-	.footer {
+	.footer-j {
 		position: absolute;
-		top: 1216/@rem;
+		top: 90%;
 		left: 50%;
 		width: 233/@rem;
 		height: 41/@rem;

@@ -48,18 +48,18 @@
 				Vue.prototype.Global.isShowAni = false;
 				if (index === '1') { //汉坤规模
 					Vue.prototype.Global.item1Flag = true;
-					this.$router.push('hkgm')
+					this.$router.replace('hkgm')
 				} else if (index === '2') { //汉坤荣誉
 					Vue.prototype.Global.item2Flag = true;
-					this.$router.push('hkry')
+					this.$router.replace('hkry')
 				} else if (index === '3') { //汉坤领域
 					Vue.prototype.Global.item3Flag = true;
-					this.$router.push('hkly')
+					this.$router.replace('hkly')
 				} else if (index === '4') { //2020寄语
 					Vue.prototype.Global.item4Flag = true;
-					this.$router.push('hkjy')
+					this.$router.replace('hkjy')
 				} else {
-					this.$router.push('menu')
+					this.$router.replace('menu')
 				}
 			}
 		}
@@ -134,11 +134,11 @@
 			}
 			.item-icon {
 				display: block;
-				width: 24/@rem;
-				height: 24/@rem;
+				width: 25/@rem;
+				height: 25/@rem;
 				background-image: url(../../static/img/icon1.png);
 				background-size: cover;
-				margin-top: 6/@rem;
+				margin-top: 4/@rem;
 			}
 			&.content-item1 {
 				top: 262/@rem;
