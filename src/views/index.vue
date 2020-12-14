@@ -53,17 +53,14 @@
 			 	console.log(image);
 			 	image.onload = () =>{ //加载完成
 			 		_this.count ++ ;
-			 		console.log(_this.count,_this.imgs.length)
 			 		let percentNum = Math.floor(_this.count / _this.imgs.length * 100);
 			 		_this.precent = `${percentNum}%`
-					// _this.porgressWidth = 
 			 	}
 			 }
 		}
     },
     watch: {
         count: function(val) {
-          console.log(val)
           if (val ===  this.imgs.length) {
             // 图片加载完成后跳转页面
             this.$router.push({path: 'menu'})

@@ -76,6 +76,20 @@
 		},
 		onHide: function() {
 			console.log('App Hide')
+		},
+		mounted () {
+			if (window.history && window.history.pushState) {
+				history.pushState(null, null, document.URL)
+				window.addEventListener('popstate', this.goBack, false)
+			}
+		},
+		methods:{
+			goBack () {
+				this.$router.push('/index')   // 这里写上你要跳转的页面
+			}
+		},
+		destroyed() {
+			 window.removeEventListener('popstate', this.goBack, false)
 		}
 	}
 
@@ -89,7 +103,7 @@ body {
 	width: 100%;
 	height: 100%;
 	display: block;
-	overflow: auto;
+	overflow-x: auto;
 }
 #app {
 	font-family: 'Avenir', Helvetica, Arial, sans-serif;

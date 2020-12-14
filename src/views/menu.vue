@@ -12,7 +12,7 @@
 			<div class="content-item  content-item3" :class="{'active':item3}"  @click="jumpPage('3')">
 				汉坤领域<span class="item-icon"></span>
 			</div>
-			<div class="content-item  content-item4" :class="{'active':item4}" @click="jumpPage('4')">
+			<div v-show="item1 && item2 && item3" class="content-item  content-item4" :class="{'active':item4}" @click="jumpPage('4')">
 				2020寄语<span class="item-icon"></span>
 			</div>
 		</div>
@@ -21,6 +21,7 @@
 			<div class="door-men"><img src="../../static/img/p1-img4.png"/></div>
 			<div class="guang"><img src="../../static/img/p1-img3.png"/></div>
 		</div>
+		<div class="footer"><img src="../../static/img/p1-img6.png"/></div>
 	</div>
 </template>
 
@@ -48,18 +49,18 @@
 				Vue.prototype.Global.isShowAni = false;
 				if (index === '1') { //汉坤规模
 					Vue.prototype.Global.item1Flag = true;
-					this.$router.push('hkgm')
+					this.$router.replace('hkgm')
 				} else if (index === '2') { //汉坤荣誉
 					Vue.prototype.Global.item2Flag = true;
-					this.$router.push('hkry')
+					this.$router.replace('hkry')
 				} else if (index === '3') { //汉坤领域
 					Vue.prototype.Global.item3Flag = true;
-					this.$router.push('hkly')
+					this.$router.replace('hkly')
 				} else if (index === '4') { //2020寄语
 					Vue.prototype.Global.item4Flag = true;
-					this.$router.push('hkjy')
+					this.$router.replace('hkjy')
 				} else {
-					this.$router.push('menu')
+					this.$router.replace('menu')
 				}
 			}
 		}
@@ -94,6 +95,7 @@
 		img {
 			display: block;
 			width: 100%;
+			transform: scale(0.8);
 		}
 	}
 
@@ -134,11 +136,11 @@
 			}
 			.item-icon {
 				display: block;
-				width: 24/@rem;
-				height: 24/@rem;
+				width: 25/@rem;
+				height: 25/@rem;
 				background-image: url(../../static/img/icon1.png);
 				background-size: cover;
-				margin-top: 6/@rem;
+				margin-top: 4/@rem;
 			}
 			&.content-item1 {
 				top: 262/@rem;
@@ -226,6 +228,22 @@
 		z-index: 100;
 		.animation(fadeOut, @t: 6s, @fn: ease-in-out, @delay: 3.5s, @i: 1, @dur: alternate);
 		animation-fill-mode: forwards;
+	}
+	.footer{
+		position: absolute;
+		top: 90%;
+		left: 50%;
+		width: 306/@rem;
+		height: 29/@rem;
+		transform: translateX(-50%);
+		z-index: 100;
+		
+		span,
+		img {
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
 	}
 	
 	@keyframes fadeIn {
