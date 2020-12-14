@@ -2,9 +2,9 @@
 	<div class="mainBg">
 		<div v-show="!showBook">
 			<swiper :options="swiperOption" class="swiperBox">
-				<swiper-slide><img src="../assets/zbsc/book-1.png" @click="openBook(1)" /></swiper-slide>
-				<swiper-slide><img src="../assets/zbsc/book-2.png" /></swiper-slide>
-				<swiper-slide><img src="../assets/zbsc/book-3.png" /></swiper-slide>
+				<swiper-slide><img src="../assets/zbsc/book-1.png" @click="openBook(0)" /></swiper-slide>
+				<swiper-slide><img src="../assets/zbsc/book-2.png" @click="openBook(1)" /></swiper-slide>
+				<swiper-slide><img src="../assets/zbsc/book-3.png" @click="openBook(2)" /></swiper-slide>
 			</swiper>
 			<div class="footerText"><img src="../assets/zbsc/foot-text.png" /></div>
 			<div class="footerBack"><img src="../assets/back-btn.png" @click="goBack" /></div>
@@ -13,12 +13,12 @@
 		<div class="step2-bg" v-show="showBook == 1">
 			<img src="../assets/zbsc/step2-coffee.png" class="step-coffee">
 			<img src="../assets/zbsc/step2-bq.png" class="step-bq">
-			<img src="../assets/zbsc/step2-text-1.png" class="step-text-1">
+			<img :src="bookContent[bookNumber].bookTextImg" :class="'step-text-'+bookNumber">
 			<img src="../assets/zbsc/step2-xinfeng.png" class="step-xinfeng">
 		</div>
 		<!-- 第三阶段 -->
 		<div class="step3-bg" v-show="showBook == 2">
-			<img src="../assets/zbsc/step3-text-1.png" class="step-text">
+			<img :src="bookContent[bookNumber].bookImg" :class="'step-text-'+bookNumber">
 			<div class="footerBack"><img src="../assets/back-btn.png" @click="goBack2" /></div>
 		</div>
 	</div>
@@ -34,6 +34,19 @@ export default {
 		return {
 			showBook: 0,
 			bookNumber: 0,
+			bookContent: [
+			{
+				bookTextImg: require('../assets/zbsc/step2-text-1.png'),
+				bookImg: require('../assets/zbsc/step3-text-1.png'),
+			},
+			{
+				bookTextImg: require('../assets/zbsc/step2-text-2.png'),
+				bookImg: require('../assets/zbsc/step3-text-2.png'),
+			},
+			{
+				bookTextImg: require('../assets/zbsc/step2-text-3.png'),
+				bookImg: require('../assets/zbsc/step3-text-3.png'),
+			}],
 			swiperOption: {
 				// 所有的参数同 swiper 官方 api 参数一样
 				// cssMode: true,
@@ -67,11 +80,11 @@ export default {
 		},
 		openBook(num) {
 			this.showBook = 1;
-			// this.bookNumber = this.bookContent.length - 1;
+			this.bookNumber = num;
 			var that = this;
 			setTimeout(function() {
 				that.showBook = 2;
-			}, 500);
+			}, 3000);
 		}
 	},
 	computed: {}
@@ -153,44 +166,91 @@ img {
 		background-repeat: no-repeat;
 		background-position: center;
 		.step-coffee {
+			.animation(fadeOut, @t: 2s, @delay: 0s, @i: 1, @dur: alternate);
+			animation-fill-mode:forwards;
 			position: absolute;
 			.scale(320,347);
 			top:4/@r;left:0;
 			z-index: 10;
 		}
 		.step-bq {
+			.animation(fadeOut, @t: 2s, @delay: 0.5s, @i: 1, @dur: alternate);
+			animation-fill-mode:forwards;
 			position: absolute;
 			.scale(317,345);
 			top:87/@r;left:448/@r;
 			z-index: 9;
 		}
 		.step-xinfeng {
+			.animation(fadeOut, @t: 2s, @delay: 1s, @i: 1, @dur: alternate);
+			animation-fill-mode:forwards;
 			position: absolute;
 			.scale(784,1084);
 			top:162/@r;left:-19/@r;
 			z-index: 1;
 		}
-		.step-text-1 {
+		.step-text-0,.step-text-1,.step-text-2 {
+			.animation(fadeOut, @t: 2s, @delay: 1s, @i: 1, @dur: alternate);
+			animation-fill-mode:forwards;
 			position: absolute;
+			z-index: 5;
+		}
+		.step-text-0 {
+			.scale(673,782);
+			top:337/@r;left:42/@r;
+		}
+		.step-text-1 {
+			.scale(672,732);
+			top:389/@r;left:43/@r;
+		}
+		.step-text-2 {
 			.scale(683,733);
 			top:389/@r;left:43/@r;
-			z-index: 5;
 		}
 	}
 	.step3-bg {
 		.scale(750, 1300);
 		.pos-center;
+		.animation(fadeIn, @t: 0.5s, @delay: 0s, @i: 1, @dur: alternate);
+		animation-fill-mode:forwards;
 		position: relative !important;
 		background-image: url('../assets/zbsc/step3-bg.png');
 		background-size: 100% auto;
 		background-repeat: no-repeat;
 		background-position: center;
-		.step-text {
+		.step-text-0,.step-text-1,.step-text-2 {
 			position: absolute;
-			.scale(537,853);
-			top:229/@r;left:118/@r;
 			z-index: 5;
 		}
+		.step-text-0 {
+			.scale(537,853);
+			top:229/@r;left:118/@r;
+		}
+		.step-text-1 {
+			.scale(537,672);
+			top:249/@r;left:118/@r;
+		}
+		.step-text-2 {
+			.scale(553,682);
+			top:248/@r;left:118/@r;
+		}
+	}
+}
+
+@keyframes fadeOut{
+	0%{
+		opacity: 1;
+	}
+	100%{
+		opacity: 0;
+	}
+}
+@keyframes fadeIn{
+	0%{
+		opacity: 0;
+	}
+	100%{
+		opacity: 1;
 	}
 }
 </style>
