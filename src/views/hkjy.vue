@@ -7,10 +7,13 @@
 			<div class="code">
 				<img src="../../static/img/p3-img3.png" />
 			</div>
+			<div class="share">
+				<img src="../../static/img/p3-img4.png" />
+			</div>
 		</div>
-		<div class="footer-j">
+		<!-- <div class="footer-j">
 			<span class="btn-back" @click="share"><img src="../../static/img/p3-img4.png" /></span>
-		</div>
+		</div> -->
 	</div>
 </template>
 
@@ -81,11 +84,12 @@
 
 	.mainBg {
 		background-color: #ffffff;
-		background-image: url(../../static/img/p3-img1.png);
+		background: url(../../static/img/p3-img1.png) no-repeat;
 		background-size: cover;
-		width: 750/@rem;
+		width: 100%;
 		height: 100%;
 		z-index: 99;
+		overflow-y: auto;
 	}
 
 	.content-jy {
@@ -102,7 +106,7 @@
 			position: absolute;
 			top: 0;
 			left: 0;
-			width: 750/@rem;
+			width: 100%;
 			height: 1249/@rem;
 			z-index: 99;
 			pointer-events: none;
@@ -114,6 +118,15 @@
 			left: 92/@rem;
 			width: 111/@rem;
 			height: 111/@rem;
+			z-index: 100;
+		}
+		.share{
+			position: absolute;
+			top: 1225/@rem;
+			left: 50%;
+			width: 233/@rem;
+			height: 41/@rem;
+			transform: translateX(-50%);
 			z-index: 100;
 		}
 	}
@@ -154,6 +167,16 @@
 
 		100% {
 			opacity: 1;
+		}
+	}
+	@media only screen and (min-aspect-ratio: ~'1334/600'){
+		.mainBg{
+			border: 1px solid green;
+		}
+	}
+	@media  screen and (min-height: 1330px) {
+		.mainBg{
+			border: 1px blueviolet solid;
 		}
 	}
 </style>

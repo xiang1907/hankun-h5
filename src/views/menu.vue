@@ -2,7 +2,7 @@
 	<div class="wraper">
 		<div class="menu"><img src="../../static/img/p1-img1.png" /></div>
 		<div class="content">
-			<div class="sque"><img src="../../static/img/p1-img2.png"/></div>
+			<div class="sque"  @click="jumpPage('1')"></div>
 			<div class="content-item content-item1" :class="{'active':item1}"  @click="jumpPage('1')">
 				<span class="item-icon "></span>汉坤规模
 			</div>
@@ -12,16 +12,19 @@
 			<div class="content-item  content-item3" :class="{'active':item3}"  @click="jumpPage('3')">
 				汉坤领域<span class="item-icon"></span>
 			</div>
-			<div v-show="item1 && item2 && item3" class="content-item  content-item4" :class="{'active':item4}" @click="jumpPage('4')">
+			<div class="content-item  content-item4" :class="{'active':item4}" @click="jumpPage('4')">
 				2020寄语<span class="item-icon"></span>
 			</div>
+			<!-- <div v-show="item1 && item2 && item3" class="content-item  content-item4" :class="{'active':item4}" @click="jumpPage('4')">
+				2020寄语<span class="item-icon"></span>
+			</div> -->
 		</div>
 		<div class="big" v-if="isShow" ref="doorBox">
 			<div class="door-kuang"><img src="../../static/img/p1-img5.png"/></div>
 			<div class="door-men"><img src="../../static/img/p1-img4.png"/></div>
 			<div class="guang"><img src="../../static/img/p1-img3.png"/></div>
 		</div>
-		<div class="footer"><img src="../../static/img/p1-img6.png"/></div>
+		<div class="footer" v-if="!isShow"><img src="../../static/img/p1-img6.png"/></div>
 	</div>
 </template>
 
@@ -67,7 +70,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 	@rem: 50rem;
 
 	.animation(@n, @t: 0s, @fn: ease-in-out, @delay: 0s, @i: infinite, @dur: alternate) {
@@ -78,10 +81,12 @@
 	}
 
 	.wraper {
-		width: 100%;
+		width: 750/@rem;
 		height: 100%;
 		background-color: #88736a;
 		overflow-x: auto;
+		max-width: 750px;
+		margin: 0 auto;
 	}
 
 	.menu {
@@ -111,11 +116,15 @@
 		margin-left: -100/@rem;
 		.sque{
 			position: absolute;
-			top: 304/@rem;
+			top: 284/@rem;
 			left: 398/@rem;
-			width: 97/@rem;
-			.animation(round_animate, @t: 5s, @fn: linear, @delay: 0.5s, @i: infinite, @dur: alternate);
-			animation-fill-mode: forwards;
+			width: 200/@rem;
+			height: 270/@rem;
+			background: url('../../static/img/p1-img2.png') no-repeat;
+			background-size: auto 270/ @rem;
+			animation: step 6s steps(9) infinite;
+			transform-origin: top left;
+			transform: scale(0.6);
 			img{
 				display: block;
 				width: 100%;
@@ -295,5 +304,25 @@
 		 transform: rotate(1turn);
 	   }
     }
+	
+	@keyframes step {
+		0% {
+		  background-position: 0 0;
+		}
+
+		100% {
+		  background-position: -1800 / @rem 0;
+		}
+	}
+
+	@-webkit-keyframes step {
+		0% {
+		  background-position: 0 0;
+		}
+
+		100% {
+		  background-position: -1800 / @rem 0;
+		}
+	}
 	
 </style>

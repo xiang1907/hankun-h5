@@ -3,6 +3,12 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 Vue.use(Router)
+
+const orginalPush = Router.prototype.push;
+
+Router.prototype.push = function push(location) {
+	return orginalPush.call(this,location).catch(err => err)
+}
 let NODE_ENV = process.env.NODE_ENV;
 let mode = '';
 mode = NODE_ENV == 'production' ? 'history' : 'hash';

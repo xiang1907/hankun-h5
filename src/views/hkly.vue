@@ -239,9 +239,9 @@ img {
 		.bookText {
 			.scale(510,550);
 			.pos-a(341,102);
-			margin:50/@r 35/@r 0;
-			line-height: 70/@r;
-			font-size:32/@r;
+			margin:62/@r 35/@r 0;
+			line-height: 68/@r;
+			font-size:16px;
 			text-align: left;
 			overflow: auto;
 		}
