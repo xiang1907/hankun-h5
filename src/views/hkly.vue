@@ -3,7 +3,7 @@
 		<div v-show="!showBook">
 			<swiper :options="swiperOption" class="swiperBox">
 				<swiper-slide>
-					<img src="../assets/hkly/book-big.png" class="bigImg" />
+					<img src="../assets/hkly/book-big.png" class="bigImg" @click="jumpPage" />
 				</swiper-slide>
 				<swiper-slide>
 					<div class="bookBox">
@@ -40,6 +40,10 @@
 		</div>
 		<!-- 兼收和并购 -->
 		<div class="bookContentBg" v-show="showBook == 2">
+			<div class="bookBox">
+				<img src="../assets/hkly/book-content.png" alt="">
+			</div>
+			<!-- <div class="bottom"></div> -->
 			<div class="footer">
 				<img src="../assets/hkly/back-menu-btn.png" @click="goMenu"></span>
 			</div>
@@ -100,7 +104,9 @@ export default {
 	created() {
 	},
 	methods: {
-		
+		jumpPage() {
+			this.$router.push('zbsc')
+		},
 		goBack(){
 			this.$router.push('/menu')
 		},
@@ -183,6 +189,25 @@ img {
 		background-size: 100% auto;
 		background-repeat: no-repeat;
 		background-position: center;
+		.bookBox {
+			overflow-y: auto;
+			.scale(579,800);
+			position: absolute;
+			top:212/@r;left:50%;
+			transform: translateX(-50%);
+			img {
+				width:100%;
+				height:auto;
+			}
+		}
+		// .bottom {
+		// 	position: fixed;
+		// 	background: linear-gradient(to bottom,rgba(246, 239, 222, 0), rgba(246, 239, 222, 0.8));
+		// 	width:579/@r;height:80/@r;
+		// 	left: 50%;
+		// 	transform: translateX(-50%);
+		// 	bottom:280/@r;
+		// }
 		.footer{
 			position: absolute;
 			bottom: 60/@r;
