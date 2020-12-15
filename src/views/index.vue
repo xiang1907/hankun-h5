@@ -8,7 +8,7 @@
 		  <span class="loading-precent">{{precent}}</span>
 		  <span>寻找并点亮图标，开启神秘贺卡</span>
       </div>
-	  <div class="footer"><img src="../../static/img/p0-img2.png"/></div>
+	  <div class="footer-f"><img src="../../static/img/p0-img2.png"/></div>
     </div>
 </template>
 
@@ -36,6 +36,80 @@
 				url:require("../../static/img/p3-img1.png"),
 			},{
 				url:require("../../static/img/p3-img2.png"),
+			},{
+				url:require("../../static/img/p3-img3.png"),
+			},{
+				url:require("../../static/img/p4-img1.png"),
+			},{
+				url:require("../../static/img/p4-img2.png"),
+			},{
+				url:require("../../static/img/p4-img3.png"),
+			},{
+				url:require("../../static/img/hkly/book-1.png"),
+			},{
+				url:require("../../static/img/hkly/book-2.png"),
+			},{
+				url:require("../../static/img/hkly/book-3.png"),
+			},{
+				url:require("../../static/img/hkly/book-4.png"),
+			},{
+				url:require("../../static/img/hkly/book-5.png"),
+			},{
+				url:require("../../static/img/hkly/book-6.png"),
+			},{
+				url:require("../../static/img/hkly/book-7.png"),
+			},{
+				url:require("../../static/img/hkly/book-8.png"),
+			},{
+				url:require("../../static/img/hkly/book-bg.png"),
+			},{
+				url:require("../../static/img/hkly/book-big.png"),
+			},{
+				url:require("../../static/img/hkly/book-content.png"),
+			},{
+				url:require("../../static/img/hkly/book-content-1.png"),
+			},{
+				url:require("../../static/img/hkly/book-title-2.png"),
+			},{
+				url:require("../../static/img/hkly/book-title-3.png"),
+			},{
+				url:require("../../static/img/hkly/book-title-4.png"),
+			},{
+				url:require("../../static/img/hkly/book-title-5.png"),
+			},{
+				url:require("../../static/img/hkly/book-title-6.png"),
+			},{
+				url:require("../../static/img/hkly/book-title-7.png"),
+			},{
+				url:require("../../static/img/hkly/book-title-8.png"),
+			},{
+				url:require("../../static/img/zbsc/book-1.png"),
+			},{
+				url:require("../../static/img/zbsc/book-2.png"),
+			},{
+				url:require("../../static/img/zbsc/foot-text.png"),
+			},{
+				url:require("../../static/img/zbsc/step2-bg.png"),
+			},{
+				url:require("../../static/img/zbsc/step2-bq.png"),
+			},{
+				url:require("../../static/img/zbsc/step2-coffee.png"),
+			},{
+				url:require("../../static/img/zbsc/step2-text-1.png"),
+			},{
+				url:require("../../static/img/zbsc/step2-text-2.png"),
+			},{
+				url:require("../../static/img/zbsc/step2-text-3.png"),
+			},{
+				url:require("../../static/img/zbsc/step2-xinfeng.png"),
+			},{
+				url:require("../../static/img/zbsc/step3-bg.png"),
+			},{
+				url:require("../../static/img/zbsc/step3-text-1.png"),
+			},{
+				url:require("../../static/img/zbsc/step3-text-2.png"),
+			},{
+				url:require("../../static/img/zbsc/step3-text-3.png"),
 			}
 		],
 		porgressWidth: 0
@@ -50,7 +124,7 @@
 			 for(let img in _this.imgs){
 			 	let image = new Image();
 			 	image.src = _this.imgs[img].url;
-			 	console.log(image);
+			 	// console.log(image);
 			 	image.onload = () =>{ //加载完成
 			 		_this.count ++ ;
 			 		let percentNum = Math.floor(_this.count / _this.imgs.length * 100);
@@ -70,7 +144,7 @@
   };
 </script>
 
-<style lang="less" >
+<style lang="less" scoped>
 	@rem: 50rem;
 	.container{
 		width: 100%;
@@ -117,7 +191,7 @@
 		}
 		
 	}
-	.footer{
+	.footer-f{
 		width: 230/@rem;
 		margin: 280/@rem auto 150/@rem;
 		img{
@@ -125,4 +199,5 @@
 			width: 100%;
 		}
 	}
+	
 </style>

@@ -48,7 +48,7 @@
 		-moz-animation: @n @t @fn @delay @i @dur;
 	}
 	.mainBg {
-		background-color: #ffffff;
+		// background-color: #ffffff;
 		background-image: url(../../static/img/p2-img7.png);
 		background-size: cover;
 		width: 750/@rem;

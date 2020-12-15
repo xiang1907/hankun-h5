@@ -1,78 +1,84 @@
 <template>
-	<div class="mainBg">
-		<div class="content-jy">
+	<div class="mainBg"   >
+		<div class="content-jy" v-if="!isMask"> 
 			<div class="contentBg">
 				<img src="../../static/img/p3-img2.png" />
 			</div>
 			<div class="code">
 				<img src="../../static/img/p3-img3.png" />
 			</div>
-			<div class="share">
+			<div class="share" @click="share">
 				<img src="../../static/img/p3-img4.png" />
 			</div>
 		</div>
-		<!-- <div class="footer-j">
-			<span class="btn-back" @click="share"><img src="../../static/img/p3-img4.png" /></span>
-		</div> -->
+		<div class="mask" v-if="isMask">
+			<img src="../../static/img/mask.png" />
+		</div>
+		
 	</div>
+	
 </template>
 
 <script>
 	var wx = require('jweixin-module');
 	export default {
 		data() {
-			return {}
+			return {
+				isMask: false
+			}
 		},
 		methods: {
 			share() {
-				// this.$router.push('/menu')
-				this.axios.post('https://app.slinqueen.com/WXQuestion/api/wx/JSSDKApi/GetShareCode', {
+				this.isMask = true;
+				// // this.$router.push('/menu')
+				// this.axios.post('https://app.slinqueen.com/WXQuestion/api/wx/JSSDKApi/GetShareCode', {
 
-				}).then(function(res) {
-					console.log(res);
-					if (res.data.code == 0) {
-						wx.config({
-							debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-							appId: res.data.data.AppId, // 必填，公众号的唯一标识
-							timestamp: res.data.data.Timestamp, // 必填，生成签名的时间戳
-							nonceStr: res.data.data.NonceStr, // 必填，生成签名的随机串
-							signature: res.data.data.Signature, // 必填，签名
-							jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline'] // 必填，需要使用的JS接口列表
-						});
-						wx.ready(function() {
-							//分享到朋友
-							// wx.onMenuShareAppMessage({
-							wx.updateAppMessageShareData({
-								title: "汉坤2020时光之旅",
-								desc: '汉坤2020时光之旅',
-								link: "https://app.slinqueen.com/WXQuestion/h5/index.html",
-								imgUrl: 'https://app.slinqueen.com/WXQuestion/icon.png',
-								type: 'link', // 分享类型,music、video或link，不填默认为link
-								success: function() {
-									this.$router.push('menu')
-								},
-								cancel: function() {
-									//alert("未分享!");
-								}
-							});
-							wx.onMenuShareTimeline({
-								title: "汉坤2020时光之旅",
-								link: "https://app.slinqueen.com/WXQuestion/h5/index.html",
-								imgUrl: 'https://app.slinqueen.com/WXQuestion/icon.png',
-								trigger: function(res) {},
-								success: function(res) {},
-								cancel: function(res) {},
-								fail: function(res) {}
-							});
-						});
-					}
-				})
+				// }).then(function(res) {
+				// 	console.log(res);
+				// 	if (res.data.code == 0) {
+				// 		wx.config({
+				// 			debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+				// 			appId: res.data.data.AppId, // 必填，公众号的唯一标识
+				// 			timestamp: res.data.data.Timestamp, // 必填，生成签名的时间戳
+				// 			nonceStr: res.data.data.NonceStr, // 必填，生成签名的随机串
+				// 			signature: res.data.data.Signature, // 必填，签名
+				// 			jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline'] // 必填，需要使用的JS接口列表
+				// 		});
+				// 		wx.ready(function() {
+				// 			//分享到朋友
+				// 			// wx.onMenuShareAppMessage({
+				// 			wx.updateAppMessageShareData({
+				// 				title: "汉坤2020时光之旅",
+				// 				desc: '汉坤2020时光之旅',
+				// 				link: "https://app.slinqueen.com/WXQuestion/h5/index.html",
+				// 				imgUrl: 'https://app.slinqueen.com/WXQuestion/icon.png',
+				// 				type: 'link', // 分享类型,music、video或link，不填默认为link
+				// 				success: function() {
+				// 					this.$router.push('menu')
+				// 				},
+				// 				cancel: function() {
+				// 					//alert("未分享!");
+				// 				}
+				// 			});
+				// 			wx.onMenuShareTimeline({
+				// 				title: "汉坤2020时光之旅",
+				// 				link: "https://app.slinqueen.com/WXQuestion/h5/index.html",
+				// 				imgUrl: 'https://app.slinqueen.com/WXQuestion/icon.png',
+				// 				trigger: function(res) {},
+				// 				success: function(res) {},
+				// 				cancel: function(res) {},
+				// 				fail: function(res) {}
+				// 			});
+				// 		});
+				// 	}
+				// })
 			}
 		}
 	}
 </script>
 
 <style lang="less" scoped>
+	@import '../assets/css/index';
 	@rem: 50rem;
 
 	.animation(@n, @t: 0s, @fn: ease-in-out, @delay: 0s, @i: infinite, @dur: alternate) {
@@ -83,7 +89,7 @@
 	}
 
 	.mainBg {
-		background-color: #ffffff;
+		background-color: #88736a;
 		background: url(../../static/img/p3-img1.png) no-repeat;
 		background-size: cover;
 		width: 100%;
@@ -94,8 +100,16 @@
 
 	.content-jy {
 		position: relative;
-		width: 100%;
-		height: 100%;
+		// width: 100%;
+		// height: 100%;
+		// .scale(750, 1249);
+		// .pos-center;
+		width: 750/@rem;
+		height: 1249/@rem;
+		// background-image: url('../../static/img/p3-img2.png');
+		// background-size: 100% auto;
+		// background-repeat: no-repeat;
+		// background-position: center;
 
 		img {
 			display: block;
@@ -122,7 +136,7 @@
 		}
 		.share{
 			position: absolute;
-			top: 1225/@rem;
+			top: 95%;
 			left: 50%;
 			width: 233/@rem;
 			height: 41/@rem;
@@ -130,23 +144,49 @@
 			z-index: 100;
 		}
 	}
-
-	.footer-j {
+	.mask{
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0,0.8);
 		position: absolute;
-		top: 94%;
-		left: 50%;
-		width: 233/@rem;
-		height: 41/@rem;
-		transform: translateX(-50%);
+		top: 0;
+		left: 0;
 		z-index: 100;
-
-		span,
-		img {
+		img{
 			display: block;
 			width: 100%;
-			height: 100%;
 		}
 	}
+	
+	@media only screen and (max-height:1300px) and (min-height:1100px){
+		.share{
+			border: 1px solid red;
+			bottom: 80/@rem !important;
+		}
+	}
+	@media only screen and (min-height:1301px) {
+		.share{
+			border: 1px solid green;
+			bottom: -20/@rem !important;
+		}
+	}
+
+	// .footer-j {
+	// 	position: absolute;
+	// 	bottom: 92/@rem;
+	// 	left: 50%;
+	// 	width: 233/@rem;
+	// 	height: 41/@rem;
+	// 	transform: translateX(-50%);
+	// 	z-index: 100;
+
+	// 	span,
+	// 	img {
+	// 		display: block;
+	// 		width: 100%;
+	// 		height: 100%;
+	// 	}
+	// }
 
 	@keyframes moveScale {
 		0% {

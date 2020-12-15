@@ -34,14 +34,22 @@ export default new Router({
       path: '/hkly',
       name: '汉坤领域',
       component: resolve => { require(['@/views/hkly'], resolve) },
+	  meta:{allowBack: false}
     },{
       path: '/hkgm',
       name: '汉坤规模',
       component: resolve => { require(['@/views/hkgm'], resolve) },
+	   meta:{allowBack: false}
+    },{
+      path: '/hkry',
+      name: '汉坤荣誉',
+      component: resolve => { require(['@/views/hkry'], resolve) },
+	   meta:{allowBack: false}
     },{
       path: '/hkjy',
       name: '2020寄语',
       component: resolve => { require(['@/views/hkjy'], resolve) },
+	   meta:{allowBack: false}
     },{
       path: '/zbsc',
       name: '资本市场',

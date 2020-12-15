@@ -12,19 +12,19 @@
 			<div class="content-item  content-item3" :class="{'active':item3}"  @click="jumpPage('3')">
 				汉坤领域<span class="item-icon"></span>
 			</div>
-			<div class="content-item  content-item4" :class="{'active':item4}" @click="jumpPage('4')">
-				2020寄语<span class="item-icon"></span>
-			</div>
-			<!-- <div v-show="item1 && item2 && item3" class="content-item  content-item4" :class="{'active':item4}" @click="jumpPage('4')">
+		<!-- 	<div class="content-item  content-item4" :class="{'active':item4}" @click="jumpPage('4')">
 				2020寄语<span class="item-icon"></span>
 			</div> -->
+			<div v-show="item1 && item2 && item3" class="content-item  content-item4" :class="{'active':item4}" @click="jumpPage('4')">
+				2020寄语<span class="item-icon"></span>
+			</div>
 		</div>
 		<div class="big" v-if="isShow" ref="doorBox">
 			<div class="door-kuang"><img src="../../static/img/p1-img5.png"/></div>
 			<div class="door-men"><img src="../../static/img/p1-img4.png"/></div>
 			<div class="guang"><img src="../../static/img/p1-img3.png"/></div>
 		</div>
-		<div class="footer" v-if="!isShow"><img src="../../static/img/p1-img6.png"/></div>
+		<div class="footer-r" v-if="!isShow"><img src="../../static/img/p1-img6.png"/></div>
 	</div>
 </template>
 
@@ -116,13 +116,13 @@
 		margin-left: -100/@rem;
 		.sque{
 			position: absolute;
-			top: 284/@rem;
+			top: 282/@rem;
 			left: 398/@rem;
 			width: 200/@rem;
 			height: 270/@rem;
 			background: url('../../static/img/p1-img2.png') no-repeat;
 			background-size: auto 270/ @rem;
-			animation: step 6s steps(9) infinite;
+			animation: step 4s steps(9) infinite;
 			transform-origin: top left;
 			transform: scale(0.6);
 			img{
@@ -149,7 +149,7 @@
 				height: 25/@rem;
 				background-image: url(../../static/img/icon1.png);
 				background-size: cover;
-				margin-top: 4/@rem;
+				margin: 4/@rem  2px 0 2px;
 			}
 			&.content-item1 {
 				top: 262/@rem;
@@ -188,20 +188,6 @@
 		pointer-events: none;
 		.animation(scaleToPage, @t: 6s, @fn: ease-in-out, @delay: 3.5s, @i: 1, @dur: alternate);
 		animation-fill-mode: forwards;
-		// &.active{
-		// 	.animation(scaleToPage, @t: 6s, @fn: ease-in-out, @delay: 3.5s, @i: 1, @dur: alternate);
-		// 	animation-fill-mode: forwards;
-			
-		// 	.door-men{
-		// 		.animation(move, @t: 6s, @fn: ease-in-out, @delay: 0.5s, @i: 1, @dur: alternate);
-		// 		animation-fill-mode: forwards;
-		// 		transform-origin: left;
-		// 	}
-		// 	.guang{
-		// 		.animation(fadeOut, @t: 6s, @fn: ease-in-out, @delay: 3.5s, @i: 1, @dur: alternate);
-		// 		animation-fill-mode: forwards;
-		// 	}
-		// }
 		
 		img{
 			display: block;
@@ -238,7 +224,7 @@
 		.animation(fadeOut, @t: 6s, @fn: ease-in-out, @delay: 3.5s, @i: 1, @dur: alternate);
 		animation-fill-mode: forwards;
 	}
-	.footer{
+	.footer-r{
 		position: absolute;
 		top: 90%;
 		left: 50%;

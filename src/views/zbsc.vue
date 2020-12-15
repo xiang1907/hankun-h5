@@ -2,24 +2,24 @@
 	<div class="mainBg">
 		<div v-show="!showBook">
 			<swiper :options="swiperOption" class="swiperBox">
-				<swiper-slide><img src="../assets/zbsc/book-1.png" @click="openBook(0)" /></swiper-slide>
-				<swiper-slide><img src="../assets/zbsc/book-2.png" @click="openBook(1)" /></swiper-slide>
-				<swiper-slide><img src="../assets/zbsc/book-3.png" @click="openBook(2)" /></swiper-slide>
+				<swiper-slide><img src="../../static/img/zbsc/book-1.png" @click="openBook(0)" /></swiper-slide>
+				<swiper-slide><img src="../../static/img/zbsc/book-2.png" @click="openBook(1)" /></swiper-slide>
+				<swiper-slide><img src="../../static/img/zbsc/book-3.png" @click="openBook(2)" /></swiper-slide>
 			</swiper>
-			<div class="footerText"><img src="../assets/zbsc/foot-text.png" /></div>
-			<div class="footerBack"><img src="../assets/back-btn.png" @click="goBack" /></div>
+			<div class="footerText"><img src="../../static/img/zbsc/foot-text.png" /></div>
+			<div class="footerBack"><img src="../../static/img/back-btn.png" @click="goBack" /></div>
 		</div>
 		<!-- 第二阶段 -->
 		<div class="step2-bg" v-show="showBook == 1">
-			<img src="../assets/zbsc/step2-coffee.png" class="step-coffee">
-			<img src="../assets/zbsc/step2-bq.png" class="step-bq">
+			<img src="../../static/img/zbsc/step2-coffee.png" class="step-coffee">
+			<img src="../../static/img/zbsc/step2-bq.png" class="step-bq">
 			<img :src="bookContent[bookNumber].bookTextImg" :class="'step-text-'+bookNumber">
-			<img src="../assets/zbsc/step2-xinfeng.png" class="step-xinfeng">
+			<img src="../../static/img/zbsc/step2-xinfeng.png" class="step-xinfeng">
 		</div>
 		<!-- 第三阶段 -->
 		<div class="step3-bg" v-show="showBook == 2">
 			<img :src="bookContent[bookNumber].bookImg" :class="'step-text-'+bookNumber">
-			<div class="footerBack"><img src="../assets/back-btn.png" @click="goBack2" /></div>
+			<div class="footerBack"><img src="../../static/img/back-btn.png" @click="goBack2" /></div>
 		</div>
 	</div>
 </template>
@@ -36,16 +36,16 @@ export default {
 			bookNumber: 0,
 			bookContent: [
 			{
-				bookTextImg: require('../assets/zbsc/step2-text-1.png'),
-				bookImg: require('../assets/zbsc/step3-text-1.png'),
+				bookTextImg: require('../../static/img/zbsc/step2-text-1.png'),
+				bookImg: require('../../static/img/zbsc/step3-text-1.png'),
 			},
 			{
-				bookTextImg: require('../assets/zbsc/step2-text-2.png'),
-				bookImg: require('../assets/zbsc/step3-text-2.png'),
+				bookTextImg: require('../../static/img/zbsc/step2-text-2.png'),
+				bookImg: require('../../static/img/zbsc/step3-text-2.png'),
 			},
 			{
-				bookTextImg: require('../assets/zbsc/step2-text-3.png'),
-				bookImg: require('../assets/zbsc/step3-text-3.png'),
+				bookTextImg: require('../../static/img/zbsc/step2-text-3.png'),
+				bookImg: require('../../static/img/zbsc/step3-text-3.png'),
 			}],
 			swiperOption: {
 				// 所有的参数同 swiper 官方 api 参数一样
@@ -53,7 +53,7 @@ export default {
 				effect: 'coverflow',
 				coverflowEffect: {
 					rotate: 0,
-					stretch: 100,
+					stretch: 120,
 					depth: 40,
 					modifier: 1,
 					slideShadows: false
@@ -99,13 +99,11 @@ img {
 .mainBg {
 	.scale(750, 1300);
 	.pos-center;
-	background-image: url('../assets/zbsc/bg.png');
+	background-image: url('../../static/img/zbsc/bg.png');
 	background-size: 100% auto;
 	background-repeat: no-repeat;
 	background-position: center;
 	.swiperBox {
-		// height: 533 / @r;
-		// width: 100%;
 		display: block;
 		.scale(750, 533);
 		margin-top: 420 / @r;
@@ -161,7 +159,7 @@ img {
 		.scale(750, 1300);
 		.pos-center;
 		position: relative !important;
-		background-image: url('../assets/zbsc/step2-bg.png');
+		background-image: url('../../static/img/zbsc/step2-bg.png');
 		background-size: 100% auto;
 		background-repeat: no-repeat;
 		background-position: center;
@@ -214,7 +212,7 @@ img {
 		.animation(fadeIn, @t: 0.5s, @delay: 0s, @i: 1, @dur: alternate);
 		animation-fill-mode:forwards;
 		position: relative !important;
-		background-image: url('../assets/zbsc/step3-bg.png');
+		background-image: url('../../static/img/zbsc/step3-bg.png');
 		background-size: 100% auto;
 		background-repeat: no-repeat;
 		background-position: center;
