@@ -1,10 +1,11 @@
 <template>
 	<div class="mainBg">
 		<div v-show="!showBook">
-			<swiper :options="swiperOption" class="swiperBox">
-				<swiper-slide><img src="../../static/img/zbsc/book-1.png" @click="openBook(0)" /></swiper-slide>
-				<swiper-slide><img src="../../static/img/zbsc/book-2.png" @click="openBook(1)" /></swiper-slide>
-				<swiper-slide><img src="../../static/img/zbsc/book-3.png" @click="openBook(2)" /></swiper-slide>
+			<swiper :options="swiperOption" class="swiperBox" ref="mySwiper">
+				<swiper-slide v-for="(slider,index) in slideList" :key="index" ><img :src="slider.imgSrc"  />
+				</swiper-slide>
+				<!-- <swiper-slide ><img src="../../static/img/zbsc/book-2.png"  @click="openBook(1)" /></swiper-slide>
+				<swiper-slide ><img src="../../static/img/zbsc/book-3.png"  @click="openBook(2)" /></swiper-slide> -->
 			</swiper>
 			<div class="footerText"><img src="../../static/img/zbsc/foot-text.png" /></div>
 			<div class="footerBack"><img src="../../static/img/back-btn.png" @click="goBack" /></div>
@@ -18,7 +19,12 @@
 		</div>
 		<!-- 第三阶段 -->
 		<div class="step3-bg" v-show="showBook == 2">
-			<img :src="bookContent[bookNumber].bookImg" :class="'step-text-'+bookNumber">
+			<div class="step-content">
+				<img :src="bookContent[bookNumber].bookImg" :class="'step-text-'+bookNumber">
+			</div>
+			<div class="step-icon">
+				<img src="../../static/img/down-load.png" />
+			</div>
 			<div class="footerBack"><img src="../../static/img/back-btn.png" @click="goBack2" /></div>
 		</div>
 	</div>
@@ -27,13 +33,22 @@
 <script>
 // import VueAwesomeSwiper from 'vue-awesome-swiper';
 // import 'swiper/swiper-bundle.css';
-
+let vm = null;
 export default {
 	name: '',
 	data() {
 		return {
 			showBook: 0,
 			bookNumber: 0,
+			slideList:[
+				{
+					imgSrc:require('../../static/img/zbsc/book-1.png'),
+				},{
+					imgSrc:require('../../static/img/zbsc/book-2.png'),
+				},{
+					imgSrc:require('../../static/img/zbsc/book-3.png'),
+				}
+			],
 			bookContent: [
 			{
 				bookTextImg: require('../../static/img/zbsc/step2-text-1.png'),
@@ -60,11 +75,22 @@ export default {
 				},
 				slidesPerView: 1.5,
 				centeredSlides: true,
-				loop: true
+				loop: true,
+				preventLinksPropagation: false,
+				on: {
+					click:(v)=>{
+						const realIndex = vm.$refs.mySwiper.$swiper.realIndex;
+						// console.log(vm.$refs.mySwiper.$swiper.realIndex)
+						vm.openBook(vm.$refs.mySwiper.$swiper.realIndex)
+						// vm.handleClickSlide(realIndex)
+					}
+				}
 			}
 		};
 	},
-	created() {},
+	created() {
+		vm = this;
+	},
 	methods: {
 		goBack() {
 			this.$router.push('/hkly');
@@ -85,9 +111,16 @@ export default {
 			setTimeout(function() {
 				that.showBook = 2;
 			}, 3000);
+		},
+		handleClickSlide(index){
+			console.log(index)
 		}
 	},
-	computed: {}
+	computed: {
+		swiper(){
+			return vm.$refs.mySwiper.swiper;
+		}
+	}
 };
 </script>
 
@@ -206,6 +239,7 @@ img {
 			top:389/@r;left:43/@r;
 		}
 	}
+	
 	.step3-bg {
 		.scale(750, 1300);
 		.pos-center;
@@ -216,22 +250,46 @@ img {
 		background-size: 100% auto;
 		background-repeat: no-repeat;
 		background-position: center;
-		.step-text-0,.step-text-1,.step-text-2 {
+		.step-content{
 			position: absolute;
-			z-index: 5;
-		}
-		.step-text-0 {
-			.scale(537,853);
+			.scale(537,803);
 			top:229/@r;left:118/@r;
+			overflow: auto;
+			z-index: 5;
+			img{
+				display: block;
+				height: auto;
+				width: 100%;
+				overflow: auto;
+			}
 		}
-		.step-text-1 {
-			.scale(537,672);
-			top:249/@r;left:118/@r;
+		.step-icon{
+			position: absolute;
+			.scale(34, 20);
+			left: 50%;
+			bottom: 190/@r;
+			transform: translateX(-50%);
+			img{
+				width: 100%;
+				display: block;
+			}
 		}
-		.step-text-2 {
-			.scale(553,682);
-			top:248/@r;left:118/@r;
-		}
+		// .step-text-0,.step-text-1,.step-text-2 {
+		// 	position: absolute;
+		// 	z-index: 5;
+		// }
+		// .step-text-0 {
+		// 	.scale(537,853);
+		// 	top:229/@r;left:118/@r;
+		// }
+		// .step-text-1 {
+		// 	.scale(537,672);
+		// 	top:249/@r;left:118/@r;
+		// }
+		// .step-text-2 {
+		// 	.scale(553,682);
+		// 	top:248/@r;left:118/@r;
+		// }
 	}
 }
 

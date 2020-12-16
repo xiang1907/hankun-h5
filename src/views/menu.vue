@@ -182,12 +182,14 @@
 		top: 0;
 		left: 0;
 		width: 100%;
-		height: 100%;
+		height: 1300/@rem;
+		max-height: 100%;
 		z-index: 100;
 		display: block;
 		pointer-events: none;
 		.animation(scaleToPage, @t: 6s, @fn: ease-in-out, @delay: 3.5s, @i: 1, @dur: alternate);
 		animation-fill-mode: forwards;
+		overflow: hidden;
 		
 		img{
 			display: block;
@@ -213,6 +215,7 @@
 		animation-fill-mode: forwards;
 		transform-origin: left;
 		z-index: 101;
+		overflow: hidden;
 	}
 	.guang{
 		position: absolute;
@@ -257,6 +260,7 @@
 	
 		100% {
 			opacity: 0;
+			display: none;
 		}
 	}
 	
@@ -277,7 +281,6 @@
 	@keyframes scaleToPage {
 		0% {
 			transform: scale(1);
-			// opacity: 1;
 		}
 		100% {
 			transform: scale(1.5);

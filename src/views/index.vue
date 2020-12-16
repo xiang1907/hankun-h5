@@ -153,6 +153,7 @@
 		position: absolute;
 		top: 0;
 		left: 0;
+		overflow: hidden;
 	}
 	.title{
 		width: 541/@rem;

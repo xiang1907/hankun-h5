@@ -8,6 +8,9 @@
 					 <span>{{awards.enTitle}}</span>
 				 </div>
 			</div>
+			<div class="content-icon">
+				<img src="../../static/img/down-load.png" />
+			</div>
 			
 		</div>
 		
@@ -18,6 +21,9 @@
 				 <div>
 					 <li class="contentItem" v-for="(item,index) in awardsList[bookNumber].items" :key="index">{{item.text}}</li>
 				 </div>
+			</div>
+			<div class="content-icon">
+				<img src="../../static/img/down-load.png" />
 			</div>
 		</div>
 		<div class="footer-m" v-if="!showBook">
@@ -302,6 +308,13 @@ img {
 				height: 60/@rem;
 				margin: 20/@rem auto 10/@rem auto;
 			}
+		}
+		.content-icon{
+			position: absolute;
+			.scale(34, 20);
+			left: 50%;
+			bottom: 80/@rem;
+			transform: translateX(-50%);
 		}
 	}
 	

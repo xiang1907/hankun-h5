@@ -16,11 +16,11 @@ mode = NODE_ENV == 'production' ? 'history' : 'hash';
 export default new Router({
   linkActiveClass: "active",
   mode: 'hash',
-  //base:'/sjp2p/',
+  // base: process.NODE_ENV,
   routes: [
     {
       path: '/',
-      name: '默认',
+      name: '/index',
       redirect: '/index',
     },{
       path: '/index',
