@@ -6,8 +6,9 @@ var noncestr = ''
 var signature = ''
 var appid=''
 var serverUrl = "https://app.slinqueen.com";
-const url = encodeURIComponent(window.location.href.split('#')[0]);
 
+const url = window.location.href.split('#')[0];
+console.log(url)
 var weixin={
 	title: "汉坤2020时光之旅",
 	desc: '汉坤2020时光之旅',
@@ -53,6 +54,7 @@ function share() {
         // 分享到微信朋友圈
         // alert(weixin.img)
         // alert(weixin.description)
+		console.log("ready share==="+weixin.url)
         wx.onMenuShareTimeline({
             title: weixin.title,
             desc: weixin.desc,

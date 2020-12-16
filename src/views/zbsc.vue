@@ -66,8 +66,9 @@ export default {
 				// 所有的参数同 swiper 官方 api 参数一样
 				// cssMode: true,
 				effect: 'coverflow',
+				speed: 1000,
 				coverflowEffect: {
-					rotate: 0,
+					rotate: 50,
 					stretch: 120,
 					depth: 40,
 					modifier: 1,
@@ -93,7 +94,7 @@ export default {
 	},
 	methods: {
 		goBack() {
-			this.$router.push('/hkly');
+			this.$router.replace('/hkly');
 		},
 		goBack2() {
 			this.showBook = 0;
@@ -130,10 +131,13 @@ img {
 	display: block;
 }
 .mainBg {
-	.scale(750, 1300);
+	// .scale(750, 1300);
+	width: 750/@r;
+	height: 100%;
 	.pos-center;
 	background-image: url('../../static/img/zbsc/bg.png');
-	background-size: 100% auto;
+	// background-size: 100% auto;
+	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
 	.swiperBox {

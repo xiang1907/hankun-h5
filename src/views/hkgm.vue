@@ -32,7 +32,7 @@
 		},
 		methods:{
 			goBack(){
-				this.$router.push('/menu')
+				this.$router.replace('/menu')
 			}
 		}
 	}

@@ -207,7 +207,7 @@ export default {
 	},
 	methods: {
 		goBack(){
-			this.$router.push('/menu')
+			this.$router.replace('/menu')
 		},
 		goMenu() {
 			this.showBook = 0
@@ -233,9 +233,12 @@ img {
 }
 .mainBg {
 	position: relative;
-	.scale(750, 1300);
 	background: url(../../static/img/p3-img1.png) no-repeat;
-	background-size: 100% auto;
+	// .scale(750, 1300);
+	// background-size: 100% auto;
+	width: 750/@rem;
+	height: 100%;
+	background-size: cover;
 	background-position: center;
 	.content{
 		position: absolute;

@@ -41,10 +41,33 @@
 			// 	})()
 			// }
 		},
+		mounted(){
+			// const u = navigator.userAgent
+			// const isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)
+			// if (isiOS) {
+			//   window.history.pushState({}, 'title', '#')
+			// }
+			this.back();
+		},
 		methods: {
 			goBack() {
-				this.$router.push('/index') // 这里写上你要跳转的页面
-			}
+				this.$router.replace('/index') // 这里写上你要跳转的页面
+			},
+			pushHistory() {
+				//写入空白历史路径
+				  let state = {
+					title: 'title',
+					url: "#"
+				  }
+				  window.history.pushState(state, state.title, state.url)
+			},
+			back() {
+				  this.pushHistory();
+				  window.addEventListener("popstate", function (e) {
+					location.href = window.location.url;//（此处为要跳转的制定路径）
+				  }, false);
+			},
+
 		},
 		destroyed() {
 			window.removeEventListener('popstate', this.goBack, false)

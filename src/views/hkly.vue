@@ -105,10 +105,10 @@ export default {
 	},
 	methods: {
 		jumpPage() {
-			this.$router.push('zbsc')
+			this.$router.replace('zbsc')
 		},
 		goBack(){
-			this.$router.push('/menu')
+			this.$router.replace('/menu')
 		},
 		goMenu() {
 			this.showBook = 0

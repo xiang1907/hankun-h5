@@ -142,6 +142,8 @@
 					background-image: url(../../static/img/icon2.png);
 				}
 				color: #e1bd8d;
+				// .animation(fadeDis, @t: 1s, @fn: ease-in, @delay: 0.5s, @i: infinite, @dur: alternate);
+				// animation-fill-mode: forwards;
 			}
 			.item-icon {
 				display: block;
@@ -261,6 +263,14 @@
 		100% {
 			opacity: 0;
 			display: none;
+		}
+	}
+	@keyframes fadeDis{
+		0%{
+			opacity: 1;
+		}
+		100%{
+			opacity: 1;
 		}
 	}
 	
