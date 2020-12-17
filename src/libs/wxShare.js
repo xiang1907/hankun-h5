@@ -7,13 +7,13 @@ var signature = ''
 var appid=''
 var serverUrl = "https://app.slinqueen.com";
 
-const url = window.location.href.split('#')[0];
+const url = encodeURIComponent(window.location.href.split('#')[0]);
 console.log(url)
 var weixin={
 	title: "汉坤2020时光之旅",
 	desc: '汉坤2020时光之旅',
-	link: url,
-	imgUrl: 'https://app.slinqueen.com/hankun-h5/share.jpg',
+	link: 'https://app.slinqueen.com/project/hankun-h5/index.html',
+	imgUrl: 'https://app.slinqueen.com/project/hankun-h5/share.jpg',
 	type: 'link', // 分享类型,music、video或link，不填默认为link
 }
 $(function () {
@@ -58,7 +58,7 @@ function share() {
         wx.onMenuShareTimeline({
             title: weixin.title,
             desc: weixin.desc,
-            link: weixin.url,
+            link: weixin.link,
             imgUrl: weixin.imgUrl,
             success: function () {
                 // 用户确认分享后执行的回调函数
@@ -76,7 +76,7 @@ function share() {
         wx.onMenuShareAppMessage({
             title: weixin.title,
             desc: weixin.desc,
-            link: weixin.url,
+            link: weixin.link,
             imgUrl: weixin.imgUrl,
             success: function () {
                 // 用户确认分享后执行的回调函数

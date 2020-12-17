@@ -137,7 +137,7 @@
         count: function(val) {
           if (val ===  this.imgs.length) {
             // 图片加载完成后跳转页面
-            this.$router.push({path: 'menu'})
+            this.$router.replace({path: 'menu'})
           }
         }
     }

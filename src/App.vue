@@ -1,6 +1,10 @@
 <template>
-	<div id="app" ref="app">
+	<div id="app" ref="app" v-if="isScreen">
 		<router-view />
+		<audio-com ref="audios" :audioId="audioId" :audioUrl="audioUrl" :loop="loop"></audio-com>
+	</div>
+	<div v-else style="width: 100%;">
+		<img src="../static/img/landspace.jpg" style="display: block;width: 100%;"/>
 	</div>
 </template>
 
@@ -8,8 +12,8 @@
 <script>
 	import share from './libs/share';
 	import $ from 'jquery';
-	 import wxShare from './libs/wxShare';
-
+	import wxShare from './libs/wxShare';
+	import audioCom from './components/audio'
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
@@ -20,39 +24,49 @@
 		onHide: function() {
 			console.log('App Hide')
 		},
+		data() {
+			return{
+				audioId :'bgMusic',
+				loop :true,
+				// bgMusicUrl: require('../static/mp3/bgMusic.mp3'),
+				// clickMusicUrl:require('../static/mp3/clickMusic.mp3'),
+				audioUrl: require('../static/mp3/bgMusic.mp3'),
+				isScreen: true
+			}
+		},
+		components:{
+			audioCom
+		},
 		created() {
 			// const url = encodeURIComponent(window.location.href.split('#')[0]); //'https://app.slinqueen.com/WXQuestion/h5/index.htm
-			// var dataForWeixin={
-			// 	title: "汉坤2020时光之旅",
-			// 	desc: '汉坤2020时光之旅',
-			// 	link: url,
-			// 	imgUrl: 'https://app.slinqueen.com/project/share.png',
-			// 	type: 'link', // 分享类型,music、video或link，不填默认为link
-			// }
-			
-			// if (window.history && window.history.pushState) {
-			// 	history.pushState(null, null, document.URL)
-			// 	window.addEventListener('popstate', this.goBack, false)
-			// }
-			// window.onresize = ()=>{
-			// 	return (() => {
-			// 		window.screenWidth = document.body.clientWidth
-			// 		that.screenWidth = window.screenWidth
-			// 	})()
-			// }
+		},
+		beforeMount() {
+		　　window.addEventListener('orientationchange',this.renderResize, false)  
 		},
 		mounted(){
-			// const u = navigator.userAgent
-			// const isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)
-			// if (isiOS) {
-			//   window.history.pushState({}, 'title', '#')
-			// }
-			this.back();
+			var _this = this;
+			window['startAudio'] = (id) => {
+				this.startAudio()
+		    }
+			_this.renderResize();
+		    // 监听 resize 方法
+			window.addEventListener("resize", _this.renderResize, false)
+			window.addEventListener('load', _this.renderResize, false)
 		},
+		
 		methods: {
 			goBack() {
 				this.$router.replace('/index') // 这里写上你要跳转的页面
 			},
+			startAudio(){
+				// this.audioUrl = this.clickMusicUrl;
+				this.loop = false;
+				this.$refs.audios.audioAutoPlay();
+			},
+			// audioPause(){
+			// 	this.audioId = this.bgMusicUrl;
+			// 	this.$refs.audios.audioPause();
+			// },
 			pushHistory() {
 				//写入空白历史路径
 				  let state = {
@@ -67,10 +81,22 @@
 					location.href = window.location.url;//（此处为要跳转的制定路径）
 				  }, false);
 			},
+			renderResize() {
+				// 判断横竖屏
+				let width = document.documentElement.clientWidth
+				let height = document.documentElement.clientHeight
+				if(width > height) {
+					// alert('横屏')
+					this.isScreen = false
+				}else{
+					this.isScreen = true
+				}
+			}
 
 		},
 		destroyed() {
 			window.removeEventListener('popstate', this.goBack, false)
+			window.removeEventListener("resize", this.renderResize, false)
 		}
 	}
 </script>

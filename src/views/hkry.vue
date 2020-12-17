@@ -234,18 +234,18 @@ img {
 .mainBg {
 	position: relative;
 	background: url(../../static/img/p3-img1.png) no-repeat;
-	// .scale(750, 1300);
-	// background-size: 100% auto;
-	width: 750/@rem;
-	height: 100%;
-	background-size: cover;
+	.scale(750, 1300);
+	background-size: 100% auto;
+	// width: 750/@rem;
+	// height: 100%;
+	// background-size: cover;
 	background-position: center;
 	.content{
 		position: absolute;
 		.scale(736, 1017);
 		left: 0;
 		top: 108/@rem;
-		.pos-center;
+		// .pos-center;
 		background: url(../../static/img/p4-img1.png) no-repeat;
 		background-size: 100% auto;
 		background-position: center;
@@ -328,7 +328,7 @@ img {
 	@r: 50rem;
 	.footer-m{
 		position: absolute;
-		bottom: 40/@r;
+		bottom: 60/@r;
 		left: 50%;
 		width: 170/@r;
 		height: 35/@r;

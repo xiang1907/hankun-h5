@@ -19,7 +19,9 @@
 				2020寄语<span class="item-icon"></span>
 			</div>
 		</div>
-		<div class="big" v-if="isShow" ref="doorBox">
+		
+		<div class="big" v-if="isShow" ref="doorBox" :class="{'active':isStart}">
+			<div class="door-tap" @click="startDoor" v-if="isClick"><img src="../../static/img/icon3.png"/></div>
 			<div class="door-kuang"><img src="../../static/img/p1-img5.png"/></div>
 			<div class="door-men"><img src="../../static/img/p1-img4.png"/></div>
 			<div class="guang"><img src="../../static/img/p1-img3.png"/></div>
@@ -34,17 +36,19 @@
 		data() {
 			return {
 				isShow: this.Global.isShowAni,
-				// isShow: false,
+				// isShow: true,
 				item1: this.Global.item1Flag,
 				item2: this.Global.item2Flag,
 				item3: this.Global.item3Flag,
-				item4: this.Global.item4Flag
+				item4: this.Global.item4Flag,
+				isClick: true,//是否可点击
+				isStart:false,//是否开始动画
 			}
 		},
 		mounted() {
 			var _this = this;
 			setTimeout(function(){
-				_this.isShow = false;
+				// _this.isShow = false;
 			},9000);
 		},
 		methods: {
@@ -52,19 +56,28 @@
 				Vue.prototype.Global.isShowAni = false;
 				if (index === '1') { //汉坤规模
 					Vue.prototype.Global.item1Flag = true;
-					this.$router.replace('hkgm')
+					this.$router.replace('/hkgm')
 				} else if (index === '2') { //汉坤荣誉
 					Vue.prototype.Global.item2Flag = true;
-					this.$router.replace('hkry')
+					this.$router.replace('/hkry')
 				} else if (index === '3') { //汉坤领域
 					Vue.prototype.Global.item3Flag = true;
-					this.$router.replace('hkly')
+					this.$router.replace('/hkly')
 				} else if (index === '4') { //2020寄语
 					Vue.prototype.Global.item4Flag = true;
-					this.$router.replace('hkjy')
+					this.$router.replace('/hkjy')
 				} else {
-					this.$router.replace('menu')
+					this.$router.replace('/menu')
 				}
+			},
+			startDoor(){
+				var _this = this;
+				this.isClick = false;
+				this.isStart = true;
+				window.startAudio();//开始播放音乐
+				setTimeout(function(){
+					_this.isShow = false;
+				},7000);
 			}
 		}
 	}
@@ -142,8 +155,12 @@
 					background-image: url(../../static/img/icon2.png);
 				}
 				color: #e1bd8d;
-				// .animation(fadeDis, @t: 1s, @fn: ease-in, @delay: 0.5s, @i: infinite, @dur: alternate);
-				// animation-fill-mode: forwards;
+				.animation(fadeDis, @t: 1s, @fn: ease-in-out, @delay: 0.5s, @i: infinite, @dur: alternate);
+				animation-fill-mode: forwards;
+				&.content-item2{
+					.animation(fadeDis, @t: 1s, @fn: ease-in-out, @delay: 0.5s, @i: infinite, @dur: alternate);
+					animation-fill-mode: forwards;
+				}
 			}
 			.item-icon {
 				display: block;
@@ -189,14 +206,39 @@
 		z-index: 100;
 		display: block;
 		pointer-events: none;
-		.animation(scaleToPage, @t: 6s, @fn: ease-in-out, @delay: 3.5s, @i: 1, @dur: alternate);
-		animation-fill-mode: forwards;
-		overflow: hidden;
-		
+		// .animation(scaleToPage, @t: 6s, @fn: ease-in-out, @delay: 3.5s, @i: 1, @dur: alternate);
+		// animation-fill-mode: forwards;
+		// overflow: hidden;
+		&.active{
+			.animation(scaleToPage, @t: 6s, @fn: ease-in-out, @delay: 3.5s, @i: 1, @dur: alternate);
+			animation-fill-mode: forwards;
+			.door-men{
+				.animation(move, @t: 11s, @fn: ease-in-out, @delay: 1s, @i: 1, @dur: alternate);
+				animation-fill-mode: forwards;
+			}
+			.guang{
+				.animation(fadeOut, @t: 6s, @fn: ease-in-out, @delay: 3.5s, @i: 1, @dur: alternate);
+				animation-fill-mode: forwards;
+			}
+		}
 		img{
 			display: block;
 			width: 100%;
 			height: 100%;
+		}
+	}
+	/*点击音效*/
+	.door-tap{
+		position: absolute;
+		top: 52%;
+		left: 66%;
+		width: 64/@rem;
+		height: 64/@rem;
+		z-index: 102;
+		pointer-events: auto;
+		img{
+			.animation(fadeIn, @t: 1s, @fn: ease-in-out, @delay: 0.8s, @i: infinite, @dur: alternate);
+			animation-fill-mode: forwards;
 		}
 	}
 	.door-kuang{
@@ -209,13 +251,14 @@
 	}
 	.door-men{
 		position: absolute;
-		left: 130/@rem;
-		top: 130/@rem;
-		width: 444/@rem;
-		height: 1106/@rem;
-		.animation(move, @t: 11s, @fn: ease-in-out, @delay: 1s, @i: 1, @dur: alternate);
-		animation-fill-mode: forwards;
+		left: 110/@rem;
+		top: 133/@rem;
+		width: 525/@rem;
+		height: 1100/@rem;
+		// .animation(move, @t: 11s, @fn: ease-in-out, @delay: 1s, @i: 1, @dur: alternate);
+		// animation-fill-mode: forwards;
 		transform-origin: left;
+		// transform: rotateY(310deg);
 		z-index: 101;
 		overflow: hidden;
 	}
@@ -226,8 +269,8 @@
 		width: 750/@rem;
 		height: 100%;
 		z-index: 100;
-		.animation(fadeOut, @t: 6s, @fn: ease-in-out, @delay: 3.5s, @i: 1, @dur: alternate);
-		animation-fill-mode: forwards;
+		// .animation(fadeOut, @t: 6s, @fn: ease-in-out, @delay: 3.5s, @i: 1, @dur: alternate);
+		// animation-fill-mode: forwards;
 	}
 	.footer-r{
 		position: absolute;

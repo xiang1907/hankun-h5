@@ -69,7 +69,7 @@ export default {
 				speed: 1000,
 				coverflowEffect: {
 					rotate: 50,
-					stretch: 120,
+					stretch: 80,
 					depth: 40,
 					modifier: 1,
 					slideShadows: false
@@ -131,13 +131,13 @@ img {
 	display: block;
 }
 .mainBg {
-	// .scale(750, 1300);
-	width: 750/@r;
-	height: 100%;
+	.scale(750, 1300);
+	// width: 750/@r;
+	// height: 100%;
 	.pos-center;
 	background-image: url('../../static/img/zbsc/bg.png');
-	// background-size: 100% auto;
-	background-size: cover;
+	background-size: 100% auto;
+	// background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
 	.swiperBox {

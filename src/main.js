@@ -14,6 +14,7 @@ Vue.prototype.axios = axios ;
 Vue.config.productionTip = false
 
 
+
 router.afterEach(route => {
   // iView.LoadingBar.finish();
   window.scrollTo(0, 0);
