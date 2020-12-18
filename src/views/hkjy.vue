@@ -17,6 +17,9 @@
 		</div> -->
 		<div class="mask" v-if="isMask">
 			<img src="../../static/img/mask.png" />
+			<div class="backBtn" @click="hideMask">
+				<img src="../../static/img/icon5.png"/>
+			</div>
 		</div>
 		
 	</div>
@@ -34,6 +37,9 @@
 		methods: {
 			share() {
 				this.isMask = true;
+			},
+			hideMask(){
+				this.isMask = false;
 			}
 		}
 	}
@@ -132,6 +138,15 @@
 		img{
 			display: block;
 			width: 100%;
+		}
+		.backBtn{
+			position: absolute;
+			top: 85%;
+			left: 50%;
+			width: 172/@rem;
+			height: 36/@rem;
+			transform: translateX(-50%);
+			z-index: 100;
 		}
 	}
 	
