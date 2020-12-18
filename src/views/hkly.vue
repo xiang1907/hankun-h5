@@ -1,4 +1,9 @@
 <template>
+	<div class="wraper-m">
+		<div class="mask" @click="hideMask" v-if="isMask">
+			<img src="../../static/img/hkly/bg-mask.png" />
+		</div>
+	
 	<div class="mainBg">
 		<div v-show="!showBook">
 			<swiper :options="swiperOption" class="swiperBox">
@@ -49,16 +54,19 @@
 			</div>
 		</div>
 	</div>
+	</div>
 </template>
 
 <script>
 // import VueAwesomeSwiper from 'vue-awesome-swiper';
 // import 'swiper/swiper-bundle.css';
+import Vue from 'vue';
 
 export default {
 	name: '',
 	data() {
 		return {
+			isMask: this.Global.isMask,
 			showBook: 0,
 			bookNumber: 0,
 			bookContent: [{
@@ -123,6 +131,10 @@ export default {
 			setTimeout(function(){
 				that.bookNumber = num
 			},50)
+		},
+		hideMask(){
+			this.isMask = false;
+			Vue.prototype.Global.isMask = false;
 		}
 	},
 	computed: {}
@@ -134,6 +146,23 @@ export default {
 img {
 	display: block;
 }
+.wraper-m{
+	width: 100%;
+	height: 100%;
+	.mask{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		z-index: 101;
+		background-color: rgba(0,0,0,0.7);
+		img{
+			.scale(500, 297);
+			.pos-center;
+			display: block;
+		}
+	}
+}
+
 .mainBg {
 	.scale(750, 1300);
 	.pos-center;
@@ -258,6 +287,15 @@ img {
 				height:100%;
 			}
 		}
+	}
+}
+@keyframes fadeIn {
+	0% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
 	}
 }
 </style>

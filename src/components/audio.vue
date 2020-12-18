@@ -43,9 +43,12 @@
 			},
 		},
 		mounted() {
-			// let audios = document.getElementsByTagName('audio');
-			// this.audioAutoPlay('bgMusic');
-			// console.log('mounted ----')
+			var _this = this;
+			// _this.audioAutoPlay();
+			// let audios = document.getElementById('bgMusic');
+			// audios.play();
+			// _this.handleCanplay();
+			console.log('mounted ----')
 			// document.addEventListener("visibilitychange", (e) => { // 兼容ios微信手Q
 			// 	if (this.clickMusicBtn) { // 点击了关闭音乐按钮
 			// 		if (this.playFlag) {
@@ -98,10 +101,16 @@
 			audioPause() {
 				this.$refs.bgMusic.pause();
 			},
-			audioAutoPlay() {
-				this.$refs.bgMusic.play();
+			// audioAutoPlay() {
+			// 	this.$refs.bgMusic.play();
+			// },
+			audioAutoPlay(){
+				var audio1 = document.getElementById('bgMusic');
+				audio1.play();
+				document.addEventListener("WeixinJSBridgeReady", function () {
+						audio1.play();
+				}, false);
 			},
-			
 			// 当timeupdate事件大概每秒一次，用来更新音频流的当前播放时间
 			onTimeupdate(res) {
 			  if (this.$refs.bgMusic && this.$refs.bgMusic.currentTime>=this.$refs.bgMusic.duration) {
@@ -110,6 +119,11 @@
 				  this.$refs.bgMusic.play();
 			  }
 			},
+			handleCanplay() {
+			  this.$nextTick(() => {
+				this.$refs.bgMusic.play()
+			  })
+			}
 		}
 	}
 </script>

@@ -1,16 +1,20 @@
 <template>
 	<div class="mainBg"   >
 		<div class="content-jy" v-if="!isMask"> 
-			<div class="contentBg">
+			<img src="../../static/img/p3-img5.jpg" />
+		<!-- 	<div class="contentBg">
 				<img src="../../static/img/p3-img2.png" />
-			</div>
+			</div>-->
 			<div class="code">
-				<img src="../../static/img/p3-img3.png" />
+				长按保存图片
 			</div>
 			<div class="share" @click="share">
 				<img src="../../static/img/p3-img4.png" />
-			</div>
+			</div> 
 		</div>
+		<!-- <div class="shareImg">
+			<img src="../../static/img/p3-img5.jpg" />
+		</div> -->
 		<div class="mask" v-if="isMask">
 			<img src="../../static/img/mask.png" />
 		</div>
@@ -30,48 +34,6 @@
 		methods: {
 			share() {
 				this.isMask = true;
-				// // this.$router.push('/menu')
-				// this.axios.post('https://app.slinqueen.com/WXQuestion/api/wx/JSSDKApi/GetShareCode', {
-
-				// }).then(function(res) {
-				// 	console.log(res);
-				// 	if (res.data.code == 0) {
-				// 		wx.config({
-				// 			debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-				// 			appId: res.data.data.AppId, // 必填，公众号的唯一标识
-				// 			timestamp: res.data.data.Timestamp, // 必填，生成签名的时间戳
-				// 			nonceStr: res.data.data.NonceStr, // 必填，生成签名的随机串
-				// 			signature: res.data.data.Signature, // 必填，签名
-				// 			jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline'] // 必填，需要使用的JS接口列表
-				// 		});
-				// 		wx.ready(function() {
-				// 			//分享到朋友
-				// 			// wx.onMenuShareAppMessage({
-				// 			wx.updateAppMessageShareData({
-				// 				title: "汉坤2020时光之旅",
-				// 				desc: '汉坤2020时光之旅',
-				// 				link: "https://app.slinqueen.com/WXQuestion/h5/index.html",
-				// 				imgUrl: 'https://app.slinqueen.com/WXQuestion/icon.png',
-				// 				type: 'link', // 分享类型,music、video或link，不填默认为link
-				// 				success: function() {
-				// 					this.$router.push('menu')
-				// 				},
-				// 				cancel: function() {
-				// 					//alert("未分享!");
-				// 				}
-				// 			});
-				// 			wx.onMenuShareTimeline({
-				// 				title: "汉坤2020时光之旅",
-				// 				link: "https://app.slinqueen.com/WXQuestion/h5/index.html",
-				// 				imgUrl: 'https://app.slinqueen.com/WXQuestion/icon.png',
-				// 				trigger: function(res) {},
-				// 				success: function(res) {},
-				// 				cancel: function(res) {},
-				// 				fail: function(res) {}
-				// 			});
-				// 		});
-				// 	}
-				// })
 			}
 		}
 	}
@@ -90,14 +52,27 @@
 
 	.mainBg {
 		background-color: #88736a;
-		background: url(../../static/img/p3-img1.png) no-repeat;
-		background-size: cover;
+		background: url(../../static/img/bg2.png) no-repeat;
+		background-size: contain;
 		width: 100%;
 		height: 100%;
 		z-index: 99;
 		overflow-y: auto;
 	}
-
+	.shareImg{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 101;
+		// opacity: 0;
+		pointer-events: auto;
+		img{
+			display: block;
+			width: 100%;
+		}
+	}
 	.content-jy {
 		position: relative;
 		// width: 100%;
@@ -128,10 +103,12 @@
 
 		.code {
 			position: absolute;
-			top: 982/@rem;
-			left: 92/@rem;
-			width: 111/@rem;
-			height: 111/@rem;
+			top: 1080/@rem;
+			left: 192/@rem;
+			width: 221/@rem;
+			text-align: left;
+			font-size: 22/@rem;
+			color: #1b1e53;
 			z-index: 100;
 		}
 		.share{

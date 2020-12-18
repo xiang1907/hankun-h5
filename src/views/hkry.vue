@@ -8,6 +8,9 @@
 					 <span>{{awards.enTitle}}</span>
 				 </div>
 			</div>
+			<div class="content-tap">
+				<img src="../../static/img/icon4.png" />
+			</div>
 			<div class="content-icon">
 				<img src="../../static/img/down-load.png" />
 			</div>
@@ -272,19 +275,28 @@ img {
 			overflow-y: auto;
 			
 			.contentItem{
-				height: 105/@rem;
+				height: 135/@rem;
 				// height: auto;
 				text-align: left;
-				margin: 30/@rem auto;
+				// margin: 10/@rem auto 30/@rem auto;
 				border-bottom: 1px dotted #664a0b;
+				position: relative;
 				.contentIcon{
 					.scale(54, 54);
 					margin-right: 20/@rem;
+					position: absolute;
+					top: 50%;
+					left: 0;
+					transform: translateY(-50%);
 				}
 				span{
 					display: inline-block;
 					vertical-align: middle;
 					width: 80%;
+					position: absolute;
+					top: 50%;
+					left: 70/@rem;
+					transform: translateY(-50%);
 				}
 			}
 			
@@ -319,9 +331,29 @@ img {
 			bottom: 80/@rem;
 			transform: translateX(-50%);
 		}
+		.content-tap{
+			position: absolute;
+			.scale(72, 58);
+			left: 80%;
+			top: 390/@rem;
+			transform: translateX(-50%);
+			.animation(fadeIn, @t: 2s, @fn: ease-in-out, @delay: 0.5s, @i: 3, @dur: alternate);
+			animation-fill-mode: both !important;
+			img{
+				width: 100%;
+				display: block;
+			}
+		}
 	}
-	
-	
+}
+@keyframes fadeIn {
+	0% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
 }
 </style>
 <style lang="less">

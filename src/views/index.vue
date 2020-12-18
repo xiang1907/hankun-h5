@@ -39,6 +39,8 @@
 			},{
 				url:require("../../static/img/p3-img3.png"),
 			},{
+				url:require("../../static/img/p3-img5.jpg"),
+			},{
 				url:require("../../static/img/p4-img1.png"),
 			},{
 				url:require("../../static/img/p4-img2.png"),

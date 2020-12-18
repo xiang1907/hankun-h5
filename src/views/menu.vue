@@ -21,7 +21,7 @@
 		</div>
 		
 		<div class="big" v-if="isShow" ref="doorBox" :class="{'active':isStart}">
-			<div class="door-tap" @click="startDoor" v-if="isClick"><img src="../../static/img/icon3.png"/></div>
+			<!-- <div class="door-tap" @click="startDoor" v-if="isClick"><img src="../../static/img/icon3.png"/></div> -->
 			<div class="door-kuang"><img src="../../static/img/p1-img5.png"/></div>
 			<div class="door-men"><img src="../../static/img/p1-img4.png"/></div>
 			<div class="guang"><img src="../../static/img/p1-img3.png"/></div>
@@ -47,8 +47,9 @@
 		},
 		mounted() {
 			var _this = this;
+			window.startAudio();
 			setTimeout(function(){
-				// _this.isShow = false;
+				_this.isShow = false;
 			},9000);
 		},
 		methods: {
@@ -74,7 +75,7 @@
 				var _this = this;
 				this.isClick = false;
 				this.isStart = true;
-				window.startAudio();//开始播放音乐
+				// window.startAudio();//开始播放音乐
 				setTimeout(function(){
 					_this.isShow = false;
 				},7000);
@@ -206,21 +207,21 @@
 		z-index: 100;
 		display: block;
 		pointer-events: none;
-		// .animation(scaleToPage, @t: 6s, @fn: ease-in-out, @delay: 3.5s, @i: 1, @dur: alternate);
-		// animation-fill-mode: forwards;
-		// overflow: hidden;
-		&.active{
-			.animation(scaleToPage, @t: 6s, @fn: ease-in-out, @delay: 3.5s, @i: 1, @dur: alternate);
-			animation-fill-mode: forwards;
-			.door-men{
-				.animation(move, @t: 11s, @fn: ease-in-out, @delay: 1s, @i: 1, @dur: alternate);
-				animation-fill-mode: forwards;
-			}
-			.guang{
-				.animation(fadeOut, @t: 6s, @fn: ease-in-out, @delay: 3.5s, @i: 1, @dur: alternate);
-				animation-fill-mode: forwards;
-			}
-		}
+		.animation(scaleToPage, @t: 6s, @fn: ease-in-out, @delay: 3.5s, @i: 1, @dur: alternate);
+		animation-fill-mode: forwards;
+		overflow: hidden;
+		// &.active{
+		// 	.animation(scaleToPage, @t: 6s, @fn: ease-in-out, @delay: 3.5s, @i: 1, @dur: alternate);
+		// 	animation-fill-mode: forwards;
+		// 	.door-men{
+		// 		.animation(move, @t: 11s, @fn: ease-in-out, @delay: 1s, @i: 1, @dur: alternate);
+		// 		animation-fill-mode: forwards;
+		// 	}
+		// 	.guang{
+		// 		.animation(fadeOut, @t: 6s, @fn: ease-in-out, @delay: 3.5s, @i: 1, @dur: alternate);
+		// 		animation-fill-mode: forwards;
+		// 	}
+		// }
 		img{
 			display: block;
 			width: 100%;
@@ -255,10 +256,9 @@
 		top: 133/@rem;
 		width: 525/@rem;
 		height: 1100/@rem;
-		// .animation(move, @t: 11s, @fn: ease-in-out, @delay: 1s, @i: 1, @dur: alternate);
-		// animation-fill-mode: forwards;
+		.animation(move, @t: 11s, @fn: ease-in-out, @delay: 1s, @i: 1, @dur: alternate);
+		animation-fill-mode: forwards;
 		transform-origin: left;
-		// transform: rotateY(310deg);
 		z-index: 101;
 		overflow: hidden;
 	}
@@ -269,8 +269,8 @@
 		width: 750/@rem;
 		height: 100%;
 		z-index: 100;
-		// .animation(fadeOut, @t: 6s, @fn: ease-in-out, @delay: 3.5s, @i: 1, @dur: alternate);
-		// animation-fill-mode: forwards;
+		.animation(fadeOut, @t: 6s, @fn: ease-in-out, @delay: 3.5s, @i: 1, @dur: alternate);
+		animation-fill-mode: forwards;
 	}
 	.footer-r{
 		position: absolute;

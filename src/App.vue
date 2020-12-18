@@ -48,8 +48,8 @@
 			window['startAudio'] = (id) => {
 				this.startAudio()
 		    }
+			// 监听 resize 方法
 			_this.renderResize();
-		    // 监听 resize 方法
 			window.addEventListener("resize", _this.renderResize, false)
 			window.addEventListener('load', _this.renderResize, false)
 		},
