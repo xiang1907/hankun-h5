@@ -12,11 +12,14 @@
 			<div class="content-item  content-item3" :class="{'active':item3}"  @click="jumpPage('3')">
 				汉坤领域<span class="item-icon"></span>
 			</div>
-		<!-- 	<div class="content-item  content-item4" :class="{'active':item4}" @click="jumpPage('4')">
+			<div class="content-item  content-item4" :class="{'active':item4}" @click="jumpPage('4')">
+				2020寄语<span class="item-icon"></span>
+			</div>
+			<!-- <div v-show="item1 && item2 && item3" class="content-item  content-item4" :class="{'active':item4}" @click="jumpPage('4')">
 				2020寄语<span class="item-icon"></span>
 			</div> -->
-			<div v-show="item1 && item2 && item3" class="content-item  content-item4" :class="{'active':item4}" @click="jumpPage('4')">
-				2020寄语<span class="item-icon"></span>
+			<div class="dialog-mask" v-if="isDialog">
+				<img src="../../static/img/p1-img7.png"/>
 			</div>
 		</div>
 		
@@ -43,6 +46,7 @@
 				item4: this.Global.item4Flag,
 				isClick: true,//是否可点击
 				isStart:false,//是否开始动画
+				isDialog: false,//文末寄语提示框
 			}
 		},
 		mounted() {
@@ -65,8 +69,16 @@
 					Vue.prototype.Global.item3Flag = true;
 					this.$router.replace('/hkly')
 				} else if (index === '4') { //2020寄语
-					Vue.prototype.Global.item4Flag = true;
-					this.$router.replace('/hkjy')
+					if(this.item1 && this.item2 && this.item3){
+						Vue.prototype.Global.item4Flag = true;
+						this.$router.replace('/hkjy')
+					}else{
+						this.isDialog = true;
+						setTimeout(()=>{
+							this.isDialog = false;
+						},2000)
+					}
+					
 				} else {
 					this.$router.replace('/menu')
 				}
@@ -124,7 +136,7 @@
 		width: 1710/@rem;
 		height: 1300/@rem;
 		background-size: cover;
-		font-size: 24/@rem;
+		font-size: 30/@rem;
 		color: #ffffff;
 		overflow: auto;
 		margin-left: -100/@rem;
@@ -169,30 +181,41 @@
 				height: 25/@rem;
 				background-image: url(../../static/img/icon1.png);
 				background-size: cover;
-				margin: 4/@rem  2px 0 2px;
+				margin: 10/@rem  2px 0 2px;
 			}
 			&.content-item1 {
-				top: 262/@rem;
+				top: 242/@rem;
 				left: 434/@rem;
 			}
 
 			&.content-item2 {
-				top: 454/@rem;
+				top: 448/@rem;
 				left: 626/@rem;
 				.animation(fadeIn, @t: 1s, @fn: ease-in-out, @delay: 1s, @i: infinite, @dur: alternate);
 				animation-fill-mode: forwards;
 			}
 
 			&.content-item3 {
-				top: 644/@rem;
+				top: 634/@rem;
 				left: 1004/@rem;
 			}
 
 			&.content-item4 {
-				top: 836/@rem;
+				top: 824/@rem;
 				left: 428/@rem;
 				.animation(fadeIn, @t: 1s, @fn: ease-in-out, @delay: 0.8s, @i: infinite, @dur: alternate);
 				animation-fill-mode: forwards;
+			}
+		}
+		.dialog-mask{
+			position: absolute;
+			width: 239/@rem;
+			height: 259/@rem;
+			top: 730/@rem;
+			left: 340/@rem;
+			img{
+				display: block;
+				width: 100%;
 			}
 		}
 	}
@@ -207,7 +230,7 @@
 		z-index: 100;
 		display: block;
 		pointer-events: none;
-		.animation(scaleToPage, @t: 6s, @fn: ease-in-out, @delay: 3.5s, @i: 1, @dur: alternate);
+		.animation(scaleToPage, @t: 4s, @fn: ease-in-out, @delay: 4s, @i: 1, @dur: alternate);
 		animation-fill-mode: forwards;
 		overflow: hidden;
 		// &.active{
@@ -256,7 +279,7 @@
 		top: 133/@rem;
 		width: 525/@rem;
 		height: 1100/@rem;
-		.animation(move, @t: 11s, @fn: ease-in-out, @delay: 1s, @i: 1, @dur: alternate);
+		.animation(move, @t: 8s, @fn: ease-in-out, @delay: 2s, @i: 1, @dur: alternate);
 		animation-fill-mode: forwards;
 		transform-origin: left;
 		z-index: 101;
@@ -274,7 +297,7 @@
 	}
 	.footer-r{
 		position: absolute;
-		top: 90%;
+		top: 93%;
 		left: 50%;
 		width: 306/@rem;
 		height: 29/@rem;

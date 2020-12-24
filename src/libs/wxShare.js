@@ -8,7 +8,7 @@ var appid=''
 var serverUrl = "https://app.slinqueen.com";
 
 const url = encodeURIComponent(window.location.href.split('#')[0]);
-console.log(url)
+// console.log(url)
 var weixin={
 	title: "汉坤2020时光之旅",
 	desc: '汉坤2020时光之旅',

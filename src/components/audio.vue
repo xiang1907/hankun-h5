@@ -38,7 +38,7 @@
 			"audioId": {
 			  handler(newVal) {
 				this.audioId = newVal;
-				console.log("audioId", newVal);
+				// console.log("audioId", newVal);
 			  }
 			},
 		},
@@ -48,7 +48,7 @@
 			// let audios = document.getElementById('bgMusic');
 			// audios.play();
 			// _this.handleCanplay();
-			console.log('mounted ----')
+			// console.log('mounted ----')
 			// document.addEventListener("visibilitychange", (e) => { // 兼容ios微信手Q
 			// 	if (this.clickMusicBtn) { // 点击了关闭音乐按钮
 			// 		if (this.playFlag) {

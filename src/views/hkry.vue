@@ -8,7 +8,7 @@
 					 <span>{{awards.enTitle}}</span>
 				 </div>
 			</div>
-			<div class="content-tap">
+			<div class="content-tap" v-if="isMask">
 				<img src="../../static/img/icon4.png" />
 			</div>
 			<div class="content-icon">
@@ -20,12 +20,12 @@
 		<!-- 书 -->
 		<div class="content" v-if="showBook">
 			<div class="contentTitle contentTitle2">{{awardsList[bookNumber].enTitle}}</div>
-			<div class="contentList contentList2">
-				 <div>
+			<div class="contentList contentList2" ref="subContent">
+				 <div ref="subList">
 					 <li class="contentItem" v-for="(item,index) in awardsList[bookNumber].items" :key="index">{{item.text}}</li>
 				 </div>
 			</div>
-			<div class="content-icon">
+			<div class="content-icon" v-if="bookNumber==9">
 				<img src="../../static/img/down-load.png" />
 			</div>
 		</div>
@@ -40,15 +40,17 @@
 
 <script>
 
-
+import Vue from 'vue';
 export default {
 	name: '',
 	data() {
 		return {
 			showBook: false,
+			isMask: this.Global.isMask2,
+			isShowDown: false,//是否显示向下箭头
 			bookNumber: 0,
 			awardsList: [{
-				enTitle: 'China Law and Practice (2020)',
+				enTitle: 'Chambers Asia Pacific (2021)',
 				items: [
 					{
 						text:'Band 1 私人股权律所中国律所',
@@ -59,7 +61,7 @@ export default {
 					},
 				]
 			},{
-				enTitle: 'Chambers Fintech (2020)',
+				enTitle: 'Chambers Fintech (2021)',
 				items: [
 					{
 						text:'中国区 Band 1 律所',
@@ -144,6 +146,8 @@ export default {
 					},{
 						text:'境外资本市场卓越律所',
 					},{
+						text:'航空卓越律所',
+					},{
 						text:'信息科技及电信卓越律所'
 					},{
 						text:'互联网及电商卓越律所'
@@ -158,6 +162,20 @@ export default {
 				items: [
 					{
 						text:'年度最佳TMT行业并购法律顾问',
+					}
+				]
+			},{
+				enTitle: '36氪 (2020)',
+				items: [
+					{
+						text:'「新经济之王」中国VC/PE行业最具影响力法律顾问机构Top 5',
+					}
+				]
+			},{
+				enTitle: '全球PE论坛丨财新智库 (2019-2020)',
+				items: [
+					{
+						text:'中国（PE/VC支持）十佳中介服务机构',
 					}
 				]
 			},{
@@ -207,6 +225,12 @@ export default {
 		};
 	},
 	created() {
+		var _this = this;
+		setTimeout(()=>{
+			_this.isMask = false;
+			Vue.prototype.Global.isMask2 = false;
+		},3000)
+		
 	},
 	methods: {
 		goBack(){
@@ -216,8 +240,14 @@ export default {
 			this.showBook = 0
 		},
 		showAwars(index) {
+			var that = this;
 			this.showBook = true;
 			this.bookNumber = index;
+			// setTimeout(function(){
+			// 	let subH = that.$refs['subList'].offsetHeight;
+			// 	console.log(subH)
+			// },1000)
+			
 			// var that = this
 			// setTimeout(function(){
 			// 	that.bookNumber = num
@@ -326,9 +356,9 @@ img {
 		}
 		.content-icon{
 			position: absolute;
-			.scale(34, 20);
+			.scale(144, 50);
 			left: 50%;
-			bottom: 80/@rem;
+			bottom: 30/@rem;
 			transform: translateX(-50%);
 		}
 		.content-tap{

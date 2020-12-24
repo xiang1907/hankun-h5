@@ -1,9 +1,11 @@
 <template>
 	<div class="wraper-m">
-		<div class="mask" @click="hideMask" v-if="isMask">
+		<div class="mask" v-if="isMask">
 			<img src="../../static/img/hkly/bg-mask.png" />
 		</div>
-	
+		<div class="content-tap" v-if="isMask">
+			<img src="../../static/img/icon6.png" />
+		</div>
 	<div class="mainBg">
 		<div v-show="!showBook">
 			<swiper :options="swiperOption" class="swiperBox">
@@ -91,7 +93,7 @@ export default {
 			},
 			{
 				bookTitleImg: require('../../static/img/hkly/book-title-7.png'),
-				bookText: "在多起高社会关注度且涉案数额巨大的诉讼案件中获胜并为客户消除威胁。争议解决团队迎来多位业界久负盛名的合伙人加盟，处理商事争议的能力继续迈上新台阶。"
+				bookText: "一流团队再次升级。争议解决团队在2020年迎来多位重量级合伙人、资深顾问加盟，人员翻倍，实力增强。在多起引起社会广泛关注或具有重大影响的案件中崭露头角，为客户披荆斩棘、保驾护航。在发挥传统优势的同时，于井喷式增长的破产清算相关诉讼、债券违约、债券虚假陈述等领域稳固市场地位。数起最高院再审案件的完美收官，帮陷于绝望的客户“峰回路转”，迎来客户的大家赞誉。"
 			},
 			{
 				bookTitleImg: require('../../static/img/hkly/book-title-8.png'),
@@ -110,6 +112,11 @@ export default {
 		};
 	},
 	created() {
+		var _this = this;
+		setTimeout(()=>{
+			_this.isMask = false;
+			Vue.prototype.Global.isMask = false;
+		},3000)
 	},
 	methods: {
 		jumpPage() {
@@ -149,15 +156,34 @@ img {
 .wraper-m{
 	width: 100%;
 	height: 100%;
+	position: relative;
 	.mask{
 		position: absolute;
 		width: 100%;
 		height: 100%;
 		z-index: 101;
-		background-color: rgba(0,0,0,0.7);
+		background-color: rgba(0,0,0,0.9);
+		.animation(fadeIn, @t: 3s, @fn: ease-in-out, @delay: 0.5s, @i: 1, @dur: alternate);
+		animation-fill-mode: both !important;
+		// pointer-events: none;
 		img{
 			.scale(500, 297);
 			.pos-center;
+			display: block;
+		}
+	}
+	.content-tap{
+		position: absolute;
+		.scale(184, 166);
+		// .pos-center;
+		left: 55%;
+		top: 50%;
+		transform: translate(-50%,-58%);
+		.animation(fadeIn, @t: 1.5s, @fn: ease-in-out, @delay: 0.5s, @i: 3, @dur: alternate);
+		animation-fill-mode: both !important;
+		z-index: 102;
+		img{
+			width: 100%;
 			display: block;
 		}
 	}

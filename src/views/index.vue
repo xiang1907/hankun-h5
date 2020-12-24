@@ -118,7 +118,8 @@
       };
     },
     mounted: function() {
-       this.preload()
+		var that = this;
+		that.preload()
     },
     methods: {
         preload(){
@@ -133,13 +134,20 @@
 			 		_this.precent = `${percentNum}%`
 			 	}
 			 }
+		},
+		jumpPage(){
+			setTimeout(()=>{
+				this.$router.replace({path: 'menu'})
+			},2000)
 		}
     },
     watch: {
         count: function(val) {
+		  var _this = this;
           if (val ===  this.imgs.length) {
             // 图片加载完成后跳转页面
-            this.$router.replace({path: 'menu'})
+			this.$router.replace({path: 'menu'})
+			// _this.jumpPage();
           }
         }
     }
@@ -182,7 +190,7 @@
 				position: absolute;
 				left: 0;
 				top: 0;
-				width: 40%;
+				width: 0;
 				height: 100%;
 				border-radius: 10px;
 				background-color: #e94b4d;

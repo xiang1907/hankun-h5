@@ -19,10 +19,10 @@
 		</div>
 		<!-- 第三阶段 -->
 		<div class="step3-bg" v-show="showBook == 2">
-			<div class="step-content">
-				<img :src="bookContent[bookNumber].bookImg" :class="'step-text-'+bookNumber">
+			<div class="step-content" ref="stepCon">
+				<img :src="bookContent[bookNumber].bookImg" :class="'step-text-'+bookNumber" :ref="'imgSize'+bookNumber" @load="loadImg($event.target)">
 			</div>
-			<div class="step-icon">
+			<div class="step-icon" v-if="isShowLoad">
 				<img src="../../static/img/down-load.png" />
 			</div>
 			<div class="footerBack"><img src="../../static/img/back-btn.png" @click="goBack2" /></div>
@@ -40,6 +40,7 @@ export default {
 		return {
 			showBook: 0,
 			bookNumber: 0,
+			isShowLoad: true,
 			slideList:[
 				{
 					imgSrc:require('../../static/img/zbsc/book-1.png'),
@@ -76,14 +77,13 @@ export default {
 				},
 				slidesPerView: 1.5,
 				centeredSlides: true,
-				loop: true,
+				loop: false,
 				preventLinksPropagation: false,
 				on: {
 					click:(v)=>{
 						const realIndex = vm.$refs.mySwiper.$swiper.realIndex;
 						// console.log(vm.$refs.mySwiper.$swiper.realIndex)
 						vm.openBook(vm.$refs.mySwiper.$swiper.realIndex)
-						// vm.handleClickSlide(realIndex)
 					}
 				}
 			}
@@ -91,6 +91,9 @@ export default {
 	},
 	created() {
 		vm = this;
+		 //获取屏幕大小
+		let clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+		// console.log(clientHeight);
 	},
 	methods: {
 		goBack() {
@@ -113,8 +116,13 @@ export default {
 				that.showBook = 2;
 			}, 3000);
 		},
-		handleClickSlide(index){
-			console.log(index)
+		loadImg(e){
+			// console.log(e.height)
+			if(e.height < 675){
+				this.isShowLoad = false;
+			}else{
+				this.isShowLoad = true;
+			}
 		}
 	},
 	computed: {
@@ -269,7 +277,7 @@ img {
 		}
 		.step-icon{
 			position: absolute;
-			.scale(34, 20);
+			.scale(144, 50);
 			left: 50%;
 			bottom: 190/@r;
 			transform: translateX(-50%);
