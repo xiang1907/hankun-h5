@@ -22,7 +22,7 @@
 			<div class="step-content" ref="stepCon">
 				<img :src="bookContent[bookNumber].bookImg" :class="'step-text-'+bookNumber" :ref="'imgSize'+bookNumber" @load="loadImg($event.target)">
 			</div>
-			<div class="step-icon" v-if="isShowLoad">
+			<div class="step-icon" v-if="bookNumber!=1">
 				<img src="../../static/img/down-load.png" />
 			</div>
 			<div class="footerBack"><img src="../../static/img/back-btn.png" @click="goBack2" /></div>
@@ -118,7 +118,7 @@ export default {
 		},
 		loadImg(e){
 			// console.log(e.height)
-			if(e.height < 675){
+			if(e.height < 700){
 				this.isShowLoad = false;
 			}else{
 				this.isShowLoad = true;

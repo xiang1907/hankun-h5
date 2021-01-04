@@ -142,15 +142,15 @@
 		margin-left: -100/@rem;
 		.sque{
 			position: absolute;
-			top: 282/@rem;
+			top: 311/@rem;
 			left: 398/@rem;
-			width: 200/@rem;
-			height: 270/@rem;
+			width: 99/@rem;
+			height: 119/@rem;
 			background: url('../../static/img/p1-img2.png') no-repeat;
-			background-size: auto 270/ @rem;
-			animation: step 4s steps(9) infinite;
-			transform-origin: top left;
-			transform: scale(0.6);
+			background-size: auto 119/ @rem;
+			// animation: step 4s steps(9) infinite;
+			// transform-origin: top left;
+			// transform: scale(0.6);
 			img{
 				display: block;
 				width: 100%;
@@ -184,13 +184,13 @@
 				margin: 10/@rem  2px 0 2px;
 			}
 			&.content-item1 {
-				top: 242/@rem;
-				left: 434/@rem;
+				top: 262/@rem;
+				left: 410/@rem;
 			}
 
 			&.content-item2 {
 				top: 448/@rem;
-				left: 626/@rem;
+				left: 620/@rem;
 				.animation(fadeIn, @t: 1s, @fn: ease-in-out, @delay: 1s, @i: infinite, @dur: alternate);
 				animation-fill-mode: forwards;
 			}
@@ -201,8 +201,8 @@
 			}
 
 			&.content-item4 {
-				top: 824/@rem;
-				left: 428/@rem;
+				top: 818/@rem;
+				left: 424/@rem;
 				.animation(fadeIn, @t: 1s, @fn: ease-in-out, @delay: 0.8s, @i: infinite, @dur: alternate);
 				animation-fill-mode: forwards;
 			}
@@ -279,7 +279,7 @@
 		top: 133/@rem;
 		width: 525/@rem;
 		height: 1100/@rem;
-		.animation(move, @t: 8s, @fn: ease-in-out, @delay: 2s, @i: 1, @dur: alternate);
+		.animation(move, @t: 7s, @fn: ease-in-out, @delay: 1s, @i: 1, @dur: alternate);
 		animation-fill-mode: forwards;
 		transform-origin: left;
 		z-index: 101;

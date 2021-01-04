@@ -8,13 +8,13 @@
 			<div class="code">
 				长按保存图片
 			</div>
+			<div class="backMenu" @click="backMenu">
+				<img src="../../static/img/p3-img6.png" />
+			</div>
 			<div class="share" @click="share">
 				<img src="../../static/img/p3-img4.png" />
 			</div> 
 		</div>
-		<!-- <div class="shareImg">
-			<img src="../../static/img/p3-img5.jpg" />
-		</div> -->
 		<div class="mask" v-if="isMask">
 			<img src="../../static/img/mask.png" />
 			<div class="backBtn" @click="hideMask">
@@ -40,6 +40,9 @@
 			},
 			hideMask(){
 				this.isMask = false;
+			},
+			backMenu(){
+				this.$router.replace('/menu')
 			}
 		}
 	}
@@ -119,11 +122,18 @@
 		}
 		.share{
 			position: absolute;
-			top: 95%;
-			left: 50%;
-			width: 233/@rem;
-			height: 41/@rem;
-			transform: translateX(-50%);
+			top: 96%;
+			left: 413/@rem;
+			width: 200/@rem;
+			height: 68/@rem;
+			z-index: 100;
+		}
+		.backMenu{
+			position: absolute;
+			top: 96%;
+			left: 144/@rem;
+			width: 200/@rem;
+			height: 68/@rem;
 			z-index: 100;
 		}
 	}
@@ -162,24 +172,6 @@
 			bottom: -20/@rem !important;
 		}
 	}
-
-	// .footer-j {
-	// 	position: absolute;
-	// 	bottom: 92/@rem;
-	// 	left: 50%;
-	// 	width: 233/@rem;
-	// 	height: 41/@rem;
-	// 	transform: translateX(-50%);
-	// 	z-index: 100;
-
-	// 	span,
-	// 	img {
-	// 		display: block;
-	// 		width: 100%;
-	// 		height: 100%;
-	// 	}
-	// }
-
 	@keyframes moveScale {
 		0% {
 			transform: scale(1);

@@ -114,7 +114,7 @@
 			// 当timeupdate事件大概每秒一次，用来更新音频流的当前播放时间
 			onTimeupdate(res) {
 			  if (this.$refs.bgMusic && this.$refs.bgMusic.currentTime>=this.$refs.bgMusic.duration) {
-				  this.$refs.bgMusic.currentTime= '2'
+				  this.$refs.bgMusic.currentTime= '4'
 				  
 				  this.$refs.bgMusic.play();
 			  }

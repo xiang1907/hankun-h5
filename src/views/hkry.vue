@@ -53,11 +53,11 @@ export default {
 				enTitle: 'Chambers Asia Pacific (2021)',
 				items: [
 					{
-						text:'Band 1 私人股权律所中国律所',
+						text:'Band 1 私人股权中国律所',
 					},{
-						text:'Band 1 TMT律所中国律所',
+						text:'Band 1 TMT中国律所',
 					},{
-						text:'Band 1 航空金融律所中国律所',
+						text:'Band 1 航空金融中国律所',
 					},
 				]
 			},{

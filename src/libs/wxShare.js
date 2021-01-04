@@ -5,20 +5,23 @@ var timestamp = ''
 var noncestr = ''
 var signature = ''
 var appid=''
-var serverUrl = "https://app.slinqueen.com";
+// var serverUrl = "https://app.slinqueen.com/wxquestion";
+// var baseUrl = "https://app.slinqueen.com/project";
+var serverUrl = "https://h5.hankunlaw.com"; 
+var baseUrl = "https://h5.hankunlaw.com";
 
 const url = encodeURIComponent(window.location.href.split('#')[0]);
 // console.log(url)
 var weixin={
 	title: "汉坤2020时光之旅",
 	desc: '汉坤2020时光之旅',
-	link: 'https://app.slinqueen.com/project/hankun-h5/index.html',
-	imgUrl: 'https://app.slinqueen.com/project/hankun-h5/share.jpg',
+	link: baseUrl+'/hankun-h5/index.html',
+	imgUrl: baseUrl+'/hankun-h5/share.jpg',
 	type: 'link', // 分享类型,music、video或link，不填默认为link
 }
 $(function () {
     $.ajax({
-        url: serverUrl+"/wxquestion/api/wx/JSSDKApi/GetShareCode?returnUrl=" + url,
+        url: serverUrl+"/api/wx/JSSDKApi/GetShareCode?returnUrl=" + url,
         type: 'POST',
         async: false,
         success: function (resp) {
